@@ -6,7 +6,7 @@ const funciones = require('../models/funciones');
 
 router.get('/administrador', async (req,res)=>{
 
-    conexion.query('Select * From usuarios', (error,results,fields)=>{
+    conexion.query('Select * From productos', (error,results,fields)=>{
         if(error){
             throw error;
         }else{
@@ -21,10 +21,21 @@ router.get('/productos', async (req,res)=>{
     res.render('productos.html');
 })
 
+router.get('/armado', async (req,res)=>{
+    res.render('armado.html');
+})
+
+router.get('/inicio', async (req,res)=>{
+    res.render('inicio.html');
+})
+
+router.get('/login', async (req,res)=>{
+    res.render('login.html');
+})
 
 router.get('/editar/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('Select * from usuarios where idUsuario = ?',[id],(error,resultado)=>{
+    conexion.query('Select * from productos where idProducto = ?',[id],(error,resultado)=>{
         if(error){
             throw error;
         }else{
@@ -35,7 +46,7 @@ router.get('/editar/:id', (req,res)=>{
 
 router.get('/delete/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('Delete from usuarios where idUsuario = ?',[id],(error,resultado)=>{
+    conexion.query('Delete from productos where idProducto = ?',[id],(error,resultado)=>{
         if(error){
             throw error;
         }else{

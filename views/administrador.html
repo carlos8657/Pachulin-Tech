@@ -18,28 +18,35 @@
         <div class="container-fluid">
             <div class="container mt-4">
                 <div class="card border-secondary">
-                    <div class="card-header">Registrar Usuario</div>
+                    <div class="card-header">Registrar Producto</div>
                         <div class="card-body">
                             <form action="/save" method="post">
                                 <div class="form-group row">
+                                <% fields.forEach((usuario)=>{ %>
+                                    <% if(usuario.name === "idProducto"){ %>
+                                        <div class="form-group col">
+                                            <label for="" class="col-sm-5 col-form-label"><%=usuario.name%></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="<%=usuario.name%>" name="<%=usuario.name%>" required="" tabindex="1" disabled><br>
+                                        </div>
+                                        </div>
+                                    <% return;} %>
+                                    <% if(usuario.name === "precio" || usuario.name === "stock"){ %>
+                                        <div class="form-group col">
+                                            <label for="" class="col-sm-5 col-form-label"><%=usuario.name%></label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="<%=usuario.name%>" name="<%=usuario.name%>" required="" tabindex="1"><br>
+                                        </div>
+                                        </div>
+                                    <% return;} %>
+                                    <% if(usuario.name === "Acciones"){return;} %>
                                     <div class="form-group col">
-                                        <label for="" class="col-sm-5 col-form-label">Nombre</label>
+                                        <label for="" class="col-sm-5 col-form-label"><%=usuario.name%></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" required="" tabindex="1"><br>
-                                    </div> 
-                                    </div>
-                                    <div class="form-group col">
-                                        <label for="" class="col-sm-5 col-form-label">Apellido Paterno</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="apellidoP" name="apellidoP" required="" tabindex="2"><br>
-                                    </div>  
-                                    </div>
-                                    <div class="form-group col">
-                                        <label for="" class="col-sm-5 col-form-label">Apellido Materno</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="apellidoM" name="apellidoM" required="" tabindex="3"><br>
+                                        <input type="text" class="form-control" id="<%=usuario.name%>" name="<%=usuario.name%>" required="" tabindex="1"><br>
                                     </div>
                                     </div>
+                                <% }) %>  
                                 </div>
                                     <button type="submit" class="btn btn-primary" tabindex="4"><i class="bi bi-plus-circle"></i> Agregar</button>
                             </form>
@@ -73,13 +80,16 @@
                     
                     <tr>
                         <% results.forEach((usuario)=>{ %>
-                        <td><%=usuario.idUsuario %></td>
-                        <td><%=usuario.nombre %></td>
-                        <td><%=usuario.apellidoP %></td>
-                        <td><%=usuario.apellidoM %></td>
+                        <td><%=usuario.idProducto %></td>
+                        <td><%=usuario.descripcion %></td>
+                        <td><%=usuario.precio %></td>
+                        <td><%=usuario.stats %></td>
+                        <td><%=usuario.imagen %></td>
+                        <td><%=usuario.stock %></td>
+                        <td><%=usuario.categoria %></td>
                         <td>
-                            <a href="/editar/<%=usuario.idUsuario %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
-                            <a href="/delete/<%=usuario.idUsuario %>" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</a>
+                            <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                            <a href="/delete/<%=usuario.idProducto %>" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</a>
                         </td>
                     </tr>
                     <% }) %>

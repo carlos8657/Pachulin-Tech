@@ -1,10 +1,13 @@
 const conexion = require('../models/db');
 
 exports.save = (req,res)=>{
-    const nombre = req.body.nombre;
-    const apellidoP = req.body.apellidoP;
-    const apellidoM = req.body.apellidoM;
-    conexion.query('Insert into usuarios set ?', {nombre:nombre, apellidoP: apellidoP, apellidoM: apellidoM}, (error,results)=>{
+    const descripcion = req.body.descripcion;
+    const precio = req.body.precio;
+    const stats = req.body.stats;
+    const imagen = req.body.imagen;
+    const stock = req.body.stock;
+    const categoria = req.body.categoria;
+    conexion.query('Insert into productos set ?', {descripcion: descripcion, precio: precio, stats: stats, imagen: imagen, stock: stock, categoria: categoria}, (error,results)=>{
         if(error){
             console.log(error);
         }else{
@@ -14,11 +17,14 @@ exports.save = (req,res)=>{
 }
 
 exports.update = (req,res)=>{
-    const id = req.body.idUsuario;
-    const nombre = req.body.nombre;
-    const apellidoP = req.body.apellidoP;
-    const apellidoM = req.body.apellidoM;
-    conexion.query('Update usuarios set ? where idUsuario = ?',[{nombre:nombre, apellidoP: apellidoP, apellidoM: apellidoM},id],(error,results)=>{
+    const idProducto = req.params.id;
+    const descripcion = req.body.descripcion;
+    const precio = req.body.precio;
+    const stats = req.body.stats;
+    const imagen = req.body.imagen;
+    const stock = req.body.stock;
+    const categoria = req.body.categoria;
+    conexion.query('Update productos set ? where idProducto = ?',[{descripcion: descripcion, precio: precio, stats: stats, imagen: imagen, stock: stock, categoria: categoria},idProducto],(error,results)=>{
         if(error){
             console.log(error);
         }else{
