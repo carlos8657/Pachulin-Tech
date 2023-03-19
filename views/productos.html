@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="/js/bootstrap.js"></script>
+    <title>Productos</title>
+</head>
+<body style="background-image: url(/img/fondo.jpg)">
+    <!--  Navbar-->
+    <nav class="navbar navbar-expand-lg bg-dark" >
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="/html/inicio.html">
+                        <img src="/img/pachulogo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-m text-center" style="width: 50px; height: 50px; font-family: Helvetica, sans-serif; border-radius: 25px;">
+                        Pachulin-Tech
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-box-seam-fill" style="margin-right: 10px;"></i>Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-pc-display" style="margin-right: 10px;"></i>Preensambladas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-gpu-card" style="margin-right: 10px;"></i>Promociones</a>
+                    </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/login.html" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active text-black" id="nav-Procesadores-tab" data-bs-toggle="tab" data-bs-target="#nav-Procesadores" type="button" role="tab" aria-controls="nav-Procesadores" aria-selected="true"><i class="bi bi-cpu"></i> Procesadores</button>
+                <button class="nav-link text-black" id="nav-Disipadores-tab" data-bs-toggle="tab" data-bs-target="#nav-Disipadores" type="button" role="tab" aria-controls="nav-Disipadores" aria-selected="false"><i class="bi bi-fan"></i> Disipadores</button>
+                <button class="nav-link text-black" id="nav-TarjetasMadre-tab" data-bs-toggle="tab" data-bs-target="#nav-TarjetasMadre" type="button" role="tab" aria-controls="nav-TarjetasMadre" aria-selected="false"><i class="bi bi-motherboard-fill"></i> Tarjetas Madre</button>
+                <button class="nav-link text-black" id="nav-Ram-tab" data-bs-toggle="tab" data-bs-target="#nav-Ram" type="button" role="tab" aria-controls="nav-Ram" aria-selected="false"><i class="bi bi-memory"></i> Memorias Ram</button>
+                <button class="nav-link text-black" id="nav-Discos-tab" data-bs-toggle="tab" data-bs-target="#nav-Discos" type="button" role="tab" aria-controls="nav-Discos" aria-selected="false"><i class="bi bi-device-hdd-fill"></i> Discos Duros</button>
+                <button class="nav-link text-black" id="nav-Video-tab" data-bs-toggle="tab" data-bs-target="#nav-Video" type="button" role="tab" aria-controls="nav-Video" aria-selected="false"><i class="bi bi-gpu-card"></i> Tarjetas de Video</button>
+                <button class="nav-link text-black" id="nav-Gabinetes-tab" data-bs-toggle="tab" data-bs-target="#nav-Gabinetes" type="button" role="tab" aria-controls="nav-Gabinetes" aria-selected="false"><i class="bi bi-pc-display"></i> Gabinetes</button>
+                <button class="nav-link text-black" id="nav-Fuentes-tab" data-bs-toggle="tab" data-bs-target="#nav-Fuentes" type="button" role="tab" aria-controls="nav-Fuentes" aria-selected="false"><i class='bx bx-bolt-circle'></i> Fuentes de poder</button>
+                
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active " id="nav-Procesadores" role="tabpanel" aria-labelledby="nav-Procesadores-tab">
+                <div class="row justify-content-start">
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Procesadores/Athlon 3000G.png" class="card-img-top " alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Athlon 300G</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Procesadores/Ryzen 3600.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ryzen 5 3600</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Procesadores/Ryzen 4600.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ryzen 5 4600</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem; ">
+                            <img src="/img/Procesadores/Ryzen 5600.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ryzen 5 5600</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem; ">
+                            <img src="/img/Procesadores/Ryzen 5600x.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ryzen 5 5600x</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem; ">
+                            <img src="/img/Procesadores/Ryzen 5700.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ryzen 7 5700</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem; ">
+                            <img src="/img/Procesadores/i9-13900KF.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Intel I9</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Procesadores/i7-13700K.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Intel I7</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Procesadores/i5-13600K.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Intel I5</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Procesadores/i5-10600KF.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Intel I5</h5>
+                                <p class="card-text">Procesador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-Disipadores" role="tabpanel" aria-labelledby="nav-Disipadores-tab">
+                <div class=" row justify-content-start">
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Vetroo V5 Black RGB.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Vetroo V5 Black RGB</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/NZXT T120 Blanco RGB.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">NZXT T120 Blanco</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Be Quiet! Dark Rock Pro TR4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Be Quiet! Dark Rock</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Noctua NH-U12S chromax.black.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Noctua NH-U12S</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Noctua NH-D15.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Noctua NH-D15</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Gigabyte AORUS WATERFORCE.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Gigabyte AORUS WATERFORCE</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Game Factor Lqg501.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Game Factor Lqg501</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Deepcool Gammaxx L240.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Deepcool Gammaxx L240</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/MSI MPG CORELIQUID.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">MSI MPG CORELIQUID</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Disipadores/Corsair H100I RGB.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Corsair H100I RGB</h5>
+                                <p class="card-text">Disipador</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-TarjetasMadre" role="tabpanel" aria-labelledby="nav-TarjetasMadre-tab">
+                <div class=" row justify-content-start">
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/Gigabyte A320M.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Gigabyte A320M</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/Asus PRIME B550M.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Asus PRIME B550M</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/Asrock B550M.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Asrock B550M</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/NZXT N7 B550.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Asus PRIME B550M</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/ROG Strix B660.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">ROG Strix B660</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/Asus Rog Strix B760.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Asus Rog Strix B760</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/Asus ROG Strix B550.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Asus ROG Strix </h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/Asrock B550 EXTREME4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Asrock B550</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/GIGABYTE X570S AORUS ELITE.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">GIGABYTE X570S</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Tarjetas-madre/ASUS TUF GAMING X670E.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">ASUS TUF  X670E</h5>
+                                <p class="card-text">Tarjeta Madre</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            <div class="tab-pane fade" id="nav-Ram" role="tabpanel" aria-labelledby="nav-Ram-tab">
+                <div class=" row justify-content-start">
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Adata XPG Gammix.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Adata XPG Gammix</h5>
+                                <p class="card-text">Memoria Ram 8GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Kingston Fury Beast.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">Memoria Ram 8GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Kingston Fury Beast White RGB.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Kingston Fury Beast</h5>
+                                <p class="card-text">Memoria Ram 16GB(2x8)</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/TEAMGROUP T FORCE DELTA.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">TEAMGROUP DELTA</h5>
+                                <p class="card-text">Memoria Ram 8GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Corsair LPX Black.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Corsair LPX Black</h5>
+                                <p class="card-text">Memoria Ram 8GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Adata XPG Spectrix D50.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Adata XPG Spectrix</h5>
+                                <p class="card-text">Memoria Ram 8GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Kingston Renegade.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Kingston Renegade</h5>
+                                <p class="card-text">Memoria Ram 16GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/Patriot Viper Steel.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Patriot Viper Steel</h5>
+                                <p class="card-text">Memoria Ram 16GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/XPG Spectrix.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">XPG Spectrix</h5>
+                                <p class="card-text">Memoria Ram 8GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 15rem;">
+                            <img src="/img/Memorias-Ram/TeamGroup T-Force Elite Plus.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">TeamGroup T-Force</h5>
+                                <p class="card-text">Memoria Ram 16GB</p>
+                                <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-Discos" role="tabpanel" aria-labelledby="nav-Discos-tab">
+                    <div class="row justify-content-start">
+                        <div class="col">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">WD Blue 1TB</h5>
+                                    <p class="card-text">Disco Duro</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/Seagate Skyhawk Lite 2TB.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Seagate Skyhawk Lite 2TB</h5>
+                                    <p class="card-text">Disco Duro</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/Seagate IronWolf NAS.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Seagate IronWolf NAS 4TB</h5>
+                                    <p class="card-text">Disco Duro</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/Seagate Iron Wolf.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Seagate Iron Wolf 6TB</h5>
+                                    <p class="card-text">Tarjeta Madre</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/Seagate SkyHawk.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Seagate SkyHawk 8TB</h5>
+                                    <p class="card-text">Tarjeta Madre</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">ASUS TUF  X670E</h5>
+                                    <p class="card-text">SSD</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/TeamGroup T-Force Vulcan Z.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">TeamGroup 512GB</h5>
+                                    <p class="card-text">SSD</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">ASUS TUF  X670E</h5>
+                                    <p class="card-text">Tarjeta Madre</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">ASUS TUF  X670E</h5>
+                                    <p class="card-text">Tarjeta Madre</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 15rem;">
+                                <img src="/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">ASUS TUF  X670E</h5>
+                                    <p class="card-text">Tarjeta Madre</p>
+                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+            </div>
+        </div>
+            
+
+            <div class="tab-pane fade" id="nav-Video" role="tabpanel" aria-labelledby="nav-Video-tab">...</div>
+            <div class="tab-pane fade" id="nav-Gabinetes" role="tabpanel" aria-labelledby="nav-Gabinetes-tab">...</div>
+            <div class="tab-pane fade" id="nav-Fuentes" role="tabpanel" aria-labelledby="nav-Fuentes-tab">...</div>
+    </div>
+
+
+    <footer class="bg-dark text-center text-white fixed-bottom">
+        <div class="container p-4 pb-0">
+            <section class="mb-1">
+                <a href="" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-google"></i>
+                </a>
+                <a href="" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="" class="btn btn-outline-light btn-floating m-1" role="button">
+                    <i class="bi bi-github"></i>
+                </a>
+            </section>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 | Todos los derechos reservados | 
+            <a href="/html/inicio.html" class="text-white">Pachulin-Tech</a>
+        </div>
+    </footer>
+
+    <style>
+        .card{
+            font-family: Helvetica, sans-serif;
+            margin: 20 px;
+            height: 400px;
+            width: 35px;
+            background-color: rgba(98, 196, 167, 0.575);
+        }
+        .nav-link{
+        color: white;
+        }
+        .nav-link:hover{
+        background-color: rgb(134, 134, 134);
+        color: white;
+        }
+        .navbar-brand{
+        color: white;
+        }
+        .navbar-brand:hover{
+        color: white;
+        }
+    </style>
+</body>
+</html>
