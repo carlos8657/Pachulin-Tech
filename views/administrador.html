@@ -70,15 +70,14 @@
                 </a>
                 <span class="tooltip">si</span>
             </li>
-        </ul>
-        <ul id="logout_sidebar_button" class="nav nav-sidebar">
-            <li>
+            <li class="profile">
                 <a href="#">
-                    <i class='bx bx-log-out' style="height: 50px; width: 50x;"></i>
-                    <span class="link_name">Salir</span>
+                <i class="bx bx-log-out" id="log_out"></i>
+                <span class="link_name">si</span>
                 </a>
-                <span class="tooltip">Salir</span>
+                <span class="tooltip">si</span>
             </li>
+            
         </ul>
     </div>
 
@@ -401,6 +400,7 @@
         z-index: -2;
         }
 
+
         .sidebar li a:hover::after{
         transform: scaleX(1);
         color:var(--color-default)
@@ -438,9 +438,9 @@
         .sidebar li.profile{
         position: fixed;
         height: 60px;
-        width: 78px;
+        width: 100px;
         left: 0;
-        bottom:-8px;
+        bottom: 60px;
         padding:10px 14px;
         overflow: hidden;
         transition: all .5s ease;
@@ -481,7 +481,7 @@
         top:50%;
         right: 0;
         transform: translateY(-50%);
-        background-color: var(--color-second);
+        background-color: var();
         width: 100%;
         height: 60px;
         line-height: 60px;
