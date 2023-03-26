@@ -6,7 +6,7 @@ const funciones = require('../models/funciones');
 
 router.get('/administrador', async (req,res)=>{
 
-    conexion.query('Select * From usuarios', (error,results,fields)=>{
+    conexion.query('Select * From productos', (error,results,fields)=>{
         if(error){
             throw error;
         }else{
@@ -17,14 +17,9 @@ router.get('/administrador', async (req,res)=>{
     
 })
 
-router.get('/productos', async (req,res)=>{
-    res.render('productos.html');
-})
-
-
 router.get('/editar/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('Select * from usuarios where idUsuario = ?',[id],(error,resultado)=>{
+    conexion.query('Select * from productos where idProducto = ?',[id],(error,resultado)=>{
         if(error){
             throw error;
         }else{
@@ -33,9 +28,9 @@ router.get('/editar/:id', (req,res)=>{
     })
 })
 
-router.get('/delete/:id', (req,res)=>{
+router.get('/desactivar/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('Delete from usuarios where idUsuario = ?',[id],(error,resultado)=>{
+    conexion.query('Update productos set ? where idProducto = ?',[{estado: 0},id],(error,resultado)=>{
         if(error){
             throw error;
         }else{
@@ -44,9 +39,32 @@ router.get('/delete/:id', (req,res)=>{
     })
 })
 
-router.post('/save',funciones.save)
-router.post('/update',funciones.update)
+router.get('/activar/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('Update productos set ? where idProducto = ?',[{estado: 1},id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/administrador');
+        }
+    })
+})
 
+router.get('/busqueda', async (req,res)=>{
+    conexion.query('Select * From productos', (error,results,fields)=>{
+        if(error){
+            throw error;
+        }else{
+            fields[fields.length] = {name: 'Acciones'}
+            res.render('busqueda.html',{results,fields});
+        }
+    })
+    
+})
+
+router.post('/save',funciones.save)
+router.post('/update/:id',funciones.update)
+router.post('/buscar',funciones.buscar)
 
 
 
