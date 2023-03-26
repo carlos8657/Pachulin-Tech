@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="/js/bootstrap.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Administrador</title>
+</head>
+<!-- Fondo de pantalla -->
+<body style="background-image: url(/img/fondo.jpg)">
+    <div class="container">
+        <!-- Tablero para modificar datos -->        
+        <div class="container-fluid">
+            <div class="container mt-4">
+                <div class="card border-secondary">
+                    <div class="card-header">Registrar Producto</div>
+                        <div class="card-body">
+                            <form class="row g-3" method="post" action="/save">
+                                <div class="col-md-4">
+                                    <label for="" class="form-label">Estado</label>
+                                    <select id="estado" name="estado" class="form-select" disabled>
+                                        <option selected value="1">Activado</option>
+                                        <option value="0">Desactivado</option>
+                                    </select>
+                                  </div>
+                                <div class="col-md-4">
+                                  <label for="" class="form-label">ID</label>
+                                  <input type="number" class="form-control" id="idProducto" name="idProducto" disabled>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="" class="form-label">Precio</label>
+                                    <input type="number" class="form-control" id="precio" name="precio" required>
+                                  </div>
+                                <div class="col-12">
+                                  <label for="" class="form-label">Descripcion</label>
+                                  <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="formFile" class="form-label">Imagen</label>
+                                    <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*" required>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="inputState" class="form-label">Categoria</label>
+                                  <select id="categoria" name="categoria" class="form-select" required>
+                                    <option selected value="Procesador">Procesador</option>
+                                    <option value="Disipador">Disipador</option>
+                                    <option value="Tarjeta Madre">Tarjeta Madre</option>
+                                    <option value="Memoria RAM">Memoria RAM</option>
+                                    <option value="Disco Duro">Disco Duro</option>
+                                    <option value="Tarjeta de Video">Tarjeta de Video</option>
+                                    <option value="Gabinete">Gabinete</option>
+                                    <option value="Fuente de Poder">Fuente de Poder</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-2">
+                                  <label for="" class="form-label">Stock</label>
+                                  <input type="number" class="form-control" id="stock" name="stock" required>
+                                </div>
+                                <div class="col-12">
+                                  <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Agregar</button>
+                                </div>
+                              </form>
+                        </div>
+                </div>
+            </div>
+            <!-- Tabla con los datos -->
+            <table class="table table-bordered table-striped text-center mt-4 table-dark">
+                <thead>
+                    <tr class="bg-primary text-white">
+                        <% fields.forEach((usuario)=>{ %>
+                        <th scope="col"><%=usuario.name %></th>
+                        <% }) %>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    
+                    <tr>
+                        <% results.forEach((usuario)=>{ %>
+                        <td><%=usuario.idProducto %></td>
+                        <td style="max-width: 250px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%=usuario.descripcion %></td>
+                        <td><%=usuario.precio %></td>
+                        <td><%=usuario.imagen %></td>
+                        <td><%=usuario.stock %></td>
+                        <td><%=usuario.categoria %></td>
+                        <td><%=usuario.estado %></td>
+                        <% if (usuario.estado == 1){ %>
+                            <td>
+                                <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                <a href="/desactivar/<%=usuario.idProducto %>" class="btn btn-success"><img src="../img/switch-on.png" alt=""></a>
+                            </td>
+                        <% }else{ %>
+                            <td>
+                                <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                <a href="/activar/<%=usuario.idProducto %>" class="btn btn-danger"><img src="../img/switch-off.png" alt=""></a>
+                            </td>
+                        <% } %>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid text-white" style="background-color: #000000;">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center" style="font-size: 22px; font-family: Helvetica, sans-serif;">PachulinTech © | Todos los derechos reservados | 2023</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!-- Estilos -->
+    <style>
+        .nav-link{
+            color: white;
+        }
+        .nav-link:hover{
+            background-color: rgb(134, 134, 134);
+            color: white;
+        }
+        .navbar-brand{
+            color: white;
+        }
+        .navbar-brand:hover{
+            color: white;
+        }
+
+        .carousel-inner img{
+            width: 1000px;
+            height: 600px;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        footer{
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+        }
+        html {
+            min-height: 100%;
+            position: relative;
+        }
+        body {
+            margin: 0;
+            margin-bottom: 80px;
+        }
+
+    </style>
+
+</body>
+</html>
