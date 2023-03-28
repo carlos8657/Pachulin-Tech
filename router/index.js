@@ -11,7 +11,7 @@ router.get('/administrador', async (req,res)=>{
             throw error;
         }else{
             fields[fields.length] = {name: 'Acciones'}
-            res.render('administrador.html',{results,fields});
+            res.render('administrador2.html',{results,fields});
         }
     })
     
