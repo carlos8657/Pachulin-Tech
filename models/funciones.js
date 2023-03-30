@@ -1,34 +1,56 @@
 const conexion = require('../models/db');
+const cloudinary = require('../models/db');
 
-exports.save = (req,res)=>{
-    const descripcion = req.body.descripcion;
-    const precio = req.body.precio;
-    const imagen = req.body.imagen;
-    const stock = req.body.stock;
-    const categoria = req.body.categoria;
-    const estado = req.body.estado;
-    conexion.query('Insert into productos set ?', {descripcion: descripcion, precio: precio, imagen: imagen, stock: stock, categoria: categoria, estado : 1}, (error,results)=>{
+exports.saveProducto = (req,res)=>{
+    const descripcion = req.body.descripcionProducto;
+    const precio = req.body.precioProducto;
+    const imagen = req.files.imagenProducto[0].path.slice(6);;
+    const stock = req.body.stockProducto;
+    const categoria = req.body.categoriaProducto;
+    const estado = req.body.estadoProducto;
+    conexion.query('Insert into productos set ?', {descripcion: descripcion, precio: precio, stock: stock, imagen: imagen, categoria: categoria, estado : 1}, (error,results)=>{
         if(error){
             console.log(error);
         }else{
-            res.redirect('/administrador');
+            setTimeout(() => {
+                res.redirect('/administrador');
+              }, 3000);
         }
     })
 }
+
+exports.savePreensamble = (req,res)=>{
+    const descripcion = req.body.descripcionPreensamble;
+    const precio = req.body.precioPreensamble;
+    const stock = req.body.stockPreensamble;
+    const imagen = req.files.imagenPreensamble[0].path.slice(6);
+    const stats = req.files.stats[0].path.slice(6);;
+    const categoria = req.body.categoriaPreensamble;
+    const estado = req.body.estadoPreensamble;
+    conexion.query('Insert into preensambladas set ?', {descripcion: descripcion, precio: precio, stock: stock, imagen: imagen, stats: stats, categoria: categoria, estado : 1}, (error,results)=>{
+        if(error){
+            console.log(error);
+        }else{
+            setTimeout(() => {
+                res.redirect('/administrador');
+              }, 3000);
+        }
+    })
+}
+
 
 exports.update = (req,res)=>{
     const {id} = req.params;
     const descripcion = req.body.descripcion;
     const precio = req.body.precio;
-    const imagen = req.body.imagen;
     const stock = req.body.stock;
     const categoria = req.body.categoria;
     const estado = req.body.estado;
-    conexion.query('Update productos set ? where idProducto = ?',[{descripcion: descripcion, precio: precio, imagen: imagen, stock: stock, categoria: categoria, estado: estado},id],(error,results)=>{
+    conexion.query('Update productos set ? where idProducto = ?',[{descripcion: descripcion, precio: precio, stock: stock, categoria: categoria, estado: estado},id],(error,results)=>{
         if(error){
             console.log(error);
         }else{
-            res.redirect('/administrador');
+            res.redirect('/busqueda');
         }
     })
 }
