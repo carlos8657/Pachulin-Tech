@@ -76,8 +76,8 @@
                                                 </button>
                                             </h2>
                                             <div id="flush-categoria<%=i%>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                                
                                                 <div class="accordion-body row">
-
                                                     <% results.forEach((usuario)=>{ %>
                                                         <% if (titulo.categoria == usuario.categoria){%>
                                                             <% if(usuario.estado == 1){%>
@@ -161,7 +161,6 @@
             float: none;
             margin-bottom: 2%;
         }
-            
 
         .accordion-button{
             color: white;
@@ -176,7 +175,7 @@
 
         .accordion-item{
             background-color: rgb(128, 139, 150);
-            
+
         }
 
     </style>

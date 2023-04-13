@@ -58,8 +58,6 @@ router.get('/armado',(req,res)=>{
 })
 
 
-
-
 router.get('/administrador', async (req,res)=>{
 
     conexion.query('Select * From productos', (error,results,fields)=>{
@@ -133,7 +131,7 @@ router.get('/busqueda', async (req,res)=>{
 })
 
 router.get('/ventas', async (req,res)=>{
-    conexion.query('Select * From productos', (error,results,fields)=>{
+    conexion.query('Select * From ventas', (error,results,fields)=>{
         if(error){
             throw error;
         }else{
@@ -142,6 +140,20 @@ router.get('/ventas', async (req,res)=>{
         }
     })
     
+})
+
+router.get('/detalles/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('select detallesVentaProducto.idDetalleVentaProducto as idDetalle, detallesVentaProducto.idVentaProducto as VentaAsociada ,detallesVentaProducto.idProducto, productos.descripcion  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?;',[id],(error,resultado,fields)=>{
+        conexion.query('select detallesVentaPreensamblada.idDetalleVentaPreensamblada as idDetalle, detallesVentaPreensamblada.idVentaPreensamblada as VentaAsociada ,detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
+            if(error){
+                throw error;
+            }else{
+                fields[fields.length] = {name: 'Acciones'}
+                res.render('detalles.html',{resultado,fields,results});
+            }
+        })
+    })
 })
 
 router.post('/saveProducto',funciones.saveProducto)

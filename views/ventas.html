@@ -43,21 +43,21 @@
                 </a>
                     <span class="tooltip">Inventario</span>
             </li>
-            <li>
+            <!-- <li>
                 <a href="/ventas">
                     <i class="bi bi-bag"></i>
                     <span class="link_name">Ventas</span>
                 </a>
                 <span class="tooltip">Ventas</span>
-            </li>
+            </li> -->
 
-            <li>
+            <!-- <li>
                 <a href="#">
                     <i class="bx bx-cart-alt"></i>
                     <span class="link_name">Carrito</span>
                 </a>
                 <span class="tooltip">Carrito</span>
-            </li>
+            </li> -->
 
             <li class="profile">
                 <a href="/login">
@@ -111,26 +111,15 @@
                     
                     <tr>
                         <% results.forEach((usuario)=>{ %>
-                        <td><%=usuario.idProducto %></td>
-                        <td style="max-width: 250px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%=usuario.descripcion %></td>
-                        <td><%=usuario.precio %></td>
-                        <td><img src="<%=usuario.imagen%>" alt="" width="200px" height="200px"></td>
-                        <td><%=usuario.stock %></td>
-                        <td><%=usuario.categoria %></td>
-                        <td><%=usuario.estado %></td>
-                        <% if (usuario.estado == 0){ %>
-                            <td>
-                                <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
-                                <a href="/activar/<%=usuario.idProducto %>" class="btn btn-danger"><img src="../img/switch-off.png" alt=""></a>
-                            </td>
-                        <% }else{ %>
-                            <td>
-                                <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
-                                <a href="/desactivar/<%=usuario.idProducto %>" class="btn btn-success"><img src="../img/switch-on.png" alt=""></a>
-                            </td>
-                        <% } %>
+                        <td><%=usuario.idVenta %></td>
+                        <td><%=usuario.total %></td>
+                        <td><%=usuario.fecha %></td>
+                        <td><%=usuario.idUsuario %></td>
+                        <td>
+                            <a href="/detalles/<%=usuario.idVenta%>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Detalles</a>
+                        </td>
                     </tr>
-                    <% }) %>
+                        <% }) %>
                     
                 </tbody>
             </table>
