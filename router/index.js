@@ -4,6 +4,11 @@ const multer = require('multer');
 const bodyParser = require ('body-parser');
 const conexion = require('../models/db')
 const funciones = require('../models/funciones');
+const bcrypt = require('bcryptjs');
+
+const saltRounds = 10;
+const users = []; // array para almacenar usuarios
+
 
 const storage = multer.diskStorage({
     destination: 'public/img',
@@ -153,10 +158,40 @@ router.get('/detalles/:id', (req,res)=>{
 })
 
 router.post('/register', (req, res) => {
-    console.log('Usuario:', req.body.usuario);
-    console.log('Correo:', req.body.correo);
-    console.log('Contra:', req.body.contra);
+    const { usuario, correo, contra } = req.body;
+
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(contra, salt, function(err, hash) {
+            const user = { usuario, correo, contra: hash };
+            users.push(user);
+            console.log('Usuario registrado:', user);
+            console.log('Datos recibidos');
+        });
+    });
 });
+
+router.post('/login', (req, res) => {
+    const { correo, contra } = req.body;
+
+    const user = users.find(user => user.correo === correo);
+
+    if (user) {
+        bcrypt.compare(contra, user.contra, function(err, result) {
+            if (result) {
+                console.log('Inicio de sesión exitoso para el usuario:', user);
+                console.log('Inicio de sesión exitoso');
+            } else {
+                console.log('Contraseña incorrecta para el usuario:', user);
+                console.log('Contraseña incorrecta');
+            }
+        });
+    } else {
+        console.log('Usuario no encontrado con el email:', correo);
+        console.log('Usuario no encontrado');
+    }
+});
+
+
 
 router.get('/login',(req,res)=>{
     res.render('login.html',);
