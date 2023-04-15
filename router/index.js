@@ -152,6 +152,12 @@ router.get('/detalles/:id', (req,res)=>{
     })
 })
 
+router.post('/register', (req, res) => {
+    console.log('Usuario:', req.body.usuario);
+    console.log('Correo:', req.body.correo);
+    console.log('Contra:', req.body.contra);
+});
+
 router.get('/login',(req,res)=>{
     res.render('login.html',);
 })
