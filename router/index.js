@@ -41,10 +41,6 @@ router.get('/promociones',(req,res)=>{
     res.render('promociones.html',);
 })
 
-router.get('/login',(req,res)=>{
-    res.render('login.html',);
-})
-
 router.get('/armado',(req,res)=>{
     conexion.query('Select * From productos', (error,results)=>{
         conexion.query('Select DISTINCT categoria From productos', (err,resultado)=>{
@@ -155,6 +151,19 @@ router.get('/detalles/:id', (req,res)=>{
         })
     })
 })
+
+router.get('/login',(req,res)=>{
+    res.render('login.html',);
+})
+
+router.get('/register',(req,res)=>{
+    res.render('register.html',);
+})
+
+router.get('/usuarios',(req,res)=>{
+    res.render('usuarios.html',);
+})
+
 
 router.post('/saveProducto',funciones.saveProducto)
 router.post('/savePreensamble',funciones.savePreensamble)
