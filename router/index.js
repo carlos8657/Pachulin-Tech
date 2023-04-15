@@ -140,8 +140,8 @@ router.get('/ventas', async (req,res)=>{
 
 router.get('/detalles/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('select detallesVentaProducto.idDetalleVentaProducto as idDetalle, detallesVentaProducto.idVentaProducto as VentaAsociada ,detallesVentaProducto.idProducto, productos.descripcion  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?;',[id],(error,resultado,fields)=>{
-        conexion.query('select detallesVentaPreensamblada.idDetalleVentaPreensamblada as idDetalle, detallesVentaPreensamblada.idVentaPreensamblada as VentaAsociada ,detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
+    conexion.query('select detallesVentaProducto.idProducto, productos.descripcion  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?;',[id],(error,resultado,fields)=>{
+        conexion.query('select detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
             if(error){
                 throw error;
             }else{

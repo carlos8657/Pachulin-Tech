@@ -39,7 +39,7 @@
                         <a class="nav-link" href="/login" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/register" style="font-family: Helvetica, sans-serif; font-size: 18px;">Registrase</a>
+                        <a class="nav-link" href="/register" style="font-family: Helvetica, sans-serif; font-size: 18px;">Registrarse</a>
                     </li>
                 </ul>
             </div>
@@ -49,17 +49,17 @@
         <div class="container-fluid" style="margin-top: 5%; max-width: 400px; height: 400px; font-family: Helvetica, sans-serif; border-radius: 10px; background: rgb(129, 123, 123);">
             <div class="align-text-m text-center pt-4" >
                 <i class="bi bi-person-circle align-middle" style="font-size: 35px; color: black;"></i>
-                <label for="" style="font-size: 25px;" class="align-middle text-black">Incia Sesion</label>
+                <label for="" style="font-size: 25px;" class="align-middle text-black">Inicia Sesion</label>
             </div>
-        <form style="padding-top: 55px; ">
+        <form style="padding-top: 55px; " method="POST" action="/login">
             <div class="form-group" >
                 <label for="exampleInputEmail1" style="font-family: Helvetica, sans-serif; color: black;">Email address</label>
-                <input type="email" class="form-control" id="" aria-describedby="emailHelp" placeholder="Correo" required="true">
+                <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" placeholder="Correo" required="true">
                 <small id="" class="form-text text-muted" style="font-family: Helvetica, sans-serif;">No compartiremos tus datos con nadie.</small>
             </div>
             <div class="form-group" >
                 <label for="" style="color: black;">Contraseña</label>
-                <input type="password" class="form-control" id="" placeholder="Contraseña" required="true">
+                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña" required="true">
             </div>
 
             <div class="col d-flex justify-content-center pt-3" >
@@ -72,8 +72,7 @@
                 </div>
             </div>
             <div class="col text-center">
-                <button type="submit" class="btn btn-success mt-3" style="width: 100px; height: 40px;">Inciar</button>
-                <button type="submit" class="btn btn-primary mt-3" style="width: 100px; height: 40px;">Registrarse</button>
+                <button type="submit" class="btn btn-success mt-3">Inciar Sesion</button>
             </div>
         </form>
         <div class="container pb-5">
