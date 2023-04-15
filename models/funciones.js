@@ -1,5 +1,4 @@
 const conexion = require('../models/db');
-const cloudinary = require('../models/db');
 
 exports.saveProducto = (req,res)=>{
     const descripcion = req.body.descripcionProducto;

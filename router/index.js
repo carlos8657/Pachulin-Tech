@@ -41,9 +41,7 @@ router.get('/promociones',(req,res)=>{
     res.render('promociones.html',);
 })
 
-router.get('/login',(req,res)=>{
-    res.render('login.html',);
-})
+
 
 router.get('/armado',(req,res)=>{
     conexion.query('Select * From productos', (error,results)=>{
@@ -144,8 +142,8 @@ router.get('/ventas', async (req,res)=>{
 
 router.get('/detalles/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('select detallesVentaProducto.idDetalleVentaProducto as idDetalle, detallesVentaProducto.idVentaProducto as VentaAsociada ,detallesVentaProducto.idProducto, productos.descripcion  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?;',[id],(error,resultado,fields)=>{
-        conexion.query('select detallesVentaPreensamblada.idDetalleVentaPreensamblada as idDetalle, detallesVentaPreensamblada.idVentaPreensamblada as VentaAsociada ,detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
+    conexion.query('select detallesVentaProducto.idProducto, productos.descripcion  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?;',[id],(error,resultado,fields)=>{
+        conexion.query('select detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
             if(error){
                 throw error;
             }else{
@@ -155,6 +153,15 @@ router.get('/detalles/:id', (req,res)=>{
         })
     })
 })
+
+router.get('/login',(req,res)=>{
+    res.render('login.html',);
+})
+
+router.get('/register',(req,res)=>{
+    res.render('register.html',);
+})
+
 
 router.post('/saveProducto',funciones.saveProducto)
 router.post('/savePreensamble',funciones.savePreensamble)
