@@ -67,19 +67,3 @@ exports.buscar = (req,res)=>{
 
 
 }
-
-exports.registrar = (req,res)=>{
-    const nombre = req.body.nombre;
-    const apellido = req.body.apellido;
-    const correo = req.body.correo;
-    const password = req.body.password;
-    conexion.query('Insert into usuarios set ?', {nombre: nombre, apellido: apellido, correo: correo, password: password}, (error,results)=>{
-        if(error){
-            console.log(error);
-        }else{
-            setTimeout(() => {
-                res.redirect('/login');
-              }, 3000);
-        }
-    })
-}
