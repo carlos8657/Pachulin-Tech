@@ -3,7 +3,7 @@ const conexion = require('../models/db');
 exports.saveProducto = (req,res)=>{
     const descripcion = req.body.descripcionProducto;
     const precio = req.body.precioProducto;
-    const imagen = req.files.imagenProducto[0].path.slice(6);;
+    const imagen = req.files.imagenProducto[0].path.slice(6);
     const stock = req.body.stockProducto;
     const categoria = req.body.categoriaProducto;
     const estado = req.body.estadoProducto;

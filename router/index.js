@@ -82,7 +82,7 @@ router.get('/editar/:id', (req,res)=>{
 
 router.get('/agregarCarritoProducto/:id', (req,res)=>{
     const id = req.params.id;    
-    conexion.query('insert into detallesVentaProducto( idDetalleVentaProducto,idProducto,idVentaProducto,cantidad,subtotal) select 0 as idDetalleVentaProducto, idProducto, usuario.idUsuario as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario where productos.idProducto= ?;',[id],(error,resultado)=>{
+    conexion.query('insert into detallesVentaProducto( idDetalleVentaProducto,idProducto,idVentaProducto,cantidad,subtotal) select 0 as idDetalleVentaProducto, idProducto, MAX(ventas.idVenta) as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario inner join ventas where productos.idProducto= ?;',[id],(error,resultado)=>{
         if(error){
             throw error;
         }else{
@@ -188,6 +188,7 @@ router.get('/carrito', (req,res)=>{
         if(error){
             throw error;
         }else{
+
             res.render('carrito.html',{resultado});
         }
     })
