@@ -33,6 +33,7 @@ router.get('/productos',(req,res)=>{
     })
 })
 
+
 router.get('/preensambles',(req,res)=>{
     res.render('preensambles.html',);
 })
@@ -78,6 +79,19 @@ router.get('/editar/:id', (req,res)=>{
     })
 })
 
+
+router.get('/agregarCarritoProducto/:id', (req,res)=>{
+    const id = req.params.id;    
+    conexion.query('insert into detallesVentaProducto( idDetalleVentaProducto,idProducto,idVentaProducto,cantidad,subtotal) select 0 as idDetalleVentaProducto, idProducto, usuario.idUsuario as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario where productos.idProducto= ?;',[id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/carrito');
+        }
+    })
+})
+
+
 router.get('/editar_preensamble/:id', (req,res)=>{
     const id = req.params.id;
     conexion.query('Select * from productos where idProducto = ?',[id],(error,resultado)=>{
@@ -99,6 +113,17 @@ router.get('/desactivar/:id', (req,res)=>{
             throw error;
         }else{
             res.redirect('/busqueda');
+        }
+    })
+})
+
+router.get('/eliminar/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('delete  from detallesVentaProducto where idDetalleVentaProducto = ?',[id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/carrito');
         }
     })
 })
@@ -140,11 +165,12 @@ router.get('/ventas', async (req,res)=>{
 
 router.get('/detalles/:id', (req,res)=>{
     const id = req.params.id;
-    conexion.query('select detallesVentaProducto.idProducto, productos.descripcion  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?;',[id],(error,resultado,fields)=>{
+    conexion.query('select detallesVentaProducto.idProducto, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?',[id],(error,resultado,fields)=>{
         conexion.query('select detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
             if(error){
                 throw error;
             }else{
+                console.log(resultado)
                 fields[fields.length] = {name: 'Acciones'}
                 res.render('detalles.html',{resultado,fields,results});
             }
@@ -156,18 +182,37 @@ router.get('/login',(req,res)=>{
     res.render('login.html',);
 })
 
+router.get('/carrito', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = 1;',[id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('carrito.html',{resultado});
+        }
+    })
+})
+
+
 router.get('/register',(req,res)=>{
     res.render('register.html',);
 })
 
 router.get('/usuarios',(req,res)=>{
-    res.render('usuarios.html',);
+    conexion.query('Select * From usuario', (error,results,fields)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('usuarios.html',{results,fields});
+        }
+    })
 })
 
 
 router.post('/saveProducto',funciones.saveProducto)
 router.post('/savePreensamble',funciones.savePreensamble)
 router.post('/buscar',funciones.buscar)
+router.post('/buscarUsuarios',funciones.buscarUsuarios)
 router.post('/update/:id',funciones.update)
 
 

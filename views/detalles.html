@@ -108,9 +108,6 @@
                             }%>
                         <th scope="col"><%=usuario.name %></th>
                         <% }) %>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Subtotal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,9 +117,9 @@
                         <% resultado.forEach((usuario)=>{ %>
                         <td><%=usuario.idProducto %></td>
                         <td><%=usuario.descripcion %></td>
-                        <td>2</td>
-                        <td>100</td>
-                        <td>200</td>
+                        <td><%=usuario.cantidad %></td>
+                        <td><%=usuario.precio %></td>
+                        <td><%=usuario.subtotal %></td>
                     </tr>
                         <% }) %>
                     <tr>

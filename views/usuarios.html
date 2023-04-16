@@ -75,111 +75,51 @@
         <!-- Tablero para modificar datos -->
         <div class="container-fluid">
             <div class="container mt-4">
-                <div class="card border-secondary">
-                    <div class="card-header">Registrar Producto</div>
-                        <div class="card-body">
-                            <form class="row g-3" method="post" action="/saveProducto" enctype="multipart/form-data"> 
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Estado</label>
-                                    <select id="estadoProducto" name="estadoProducto" class="form-select" disabled>
-                                        <option selected value="1">Activado</option>
-                                        <option value="0">Desactivado</option>
-                                    </select>
-                                  </div>
-                                <div class="col-md-4">
-                                  <label for="" class="form-label">ID</label>
-                                  <input type="number" class="form-control" id="idProducto" name="idProducto" disabled>
+                <div class="card">
+                    <div class="card-header">Usuarios</div>
+                    <div class="card-body">
+                        <form action="/buscarUsuarios" method="post">
+                            <div class="row">
+                                <label for="">Buscar: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="palabra" name="palabra" required tabindex="1">
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Precio</label>
-                                    <input type="number" class="form-control" id="precioProducto" name="precioProducto" required>
-                                  </div>
-                                <div class="col-12">
-                                  <label for="" class="form-label">Descripcion</label>
-                                  <textarea class="form-control" id="descripcionProducto" name="descripcionProducto" rows="3" required></textarea>
+                                <div class="col-sm-2">
+                                    <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Buscar</button>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="formFile" class="form-label">Imagen</label>
-                                    <input class="form-control" type="file" id="imagenProducto" name="imagenProducto" accept="image/*" required>
+                                <div class="col-sm-2">
+                                    <a href="/usuarios" class="btn btn-secondary"><i class="bi bi-x"></i> Limpiar</a>
                                 </div>
-                                <div class="col-md-4">
-                                  <label for="inputState" class="form-label">Categoria</label>
-                                  <select id="categoriaProducto" name="categoriaProducto" class="form-select" required>
-                                    <option selected value="Procesador">Procesador</option>
-                                    <option value="Disipador">Disipador</option>
-                                    <option value="Tarjeta Madre">Tarjeta Madre</option>
-                                    <option value="Memoria RAM">Memoria RAM</option>
-                                    <option value="Disco Duro">Disco Duro</option>
-                                    <option value="Tarjeta de Video">Tarjeta de Video</option>
-                                    <option value="Gabinete">Gabinete</option>
-                                    <option value="Fuente de Poder">Fuente de Poder</option>
-                                  </select>
-                                </div>
-                                <div class="col-md-2">
-                                  <label for="" class="form-label">Stock</label>
-                                  <input type="number" class="form-control" id="stockProducto" name="stockProducto" required>
-                                </div>
-                                <div class="col-12">
-                                  <button type="submit" class="btn btn-primary" id="Agregar"><i class="bi bi-plus-circle"></i> Agregar</button>
-                                </div>
-                              </form>
-                        </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <div class="container mt-4">
-                <div class="card border-secondary">
-                    <div class="card-header">Registrar Preensamble</div>
-                        <div class="card-body">
-                            <form class="row g-3" method="post" action="/savePreensamble" enctype="multipart/form-data"> 
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Estado</label>
-                                    <select id="estadoPreensamble" name="estadoPreensamble" class="form-select" disabled>
-                                        <option selected value="1">Activado</option>
-                                        <option value="0">Desactivado</option>
-                                    </select>
-                                  </div>
-                                <div class="col-md-4">
-                                  <label for="" class="form-label">ID</label>
-                                  <input type="number" class="form-control" id="idPreensamble" name="idPreensamble" disabled>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Precio</label>
-                                    <input type="number" class="form-control" id="precioPreensamble" name="precioPreensamble" required>
-                                  </div>
-                                <div class="col-12">
-                                  <label for="" class="form-label">Descripcion</label>
-                                  <textarea class="form-control" id="descripcionPreensamble" name="descripcionPreensamble" rows="3" required></textarea>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="formFile" class="form-label">Imagen</label>
-                                    <input class="form-control" type="file" id="imagenPreensamble" name="imagenPreensamble" accept="image/*" required>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="formFile" class="form-label">Stats</label>
-                                    <input class="form-control" type="file" id="stats" name="stats" accept="image/*" required>
-                                </div>
-                                <div class="col-md-4">
-                                  <label for="inputState" class="form-label">Categoria</label>
-                                  <select id="categoriaPreensamble" name="categoriaPreensamble" class="form-select" required>
-                                    <option selected value="Photoshop">Photoshop</option>
-                                    <option value="Office">Office</option>
-                                    <option value="Edicion de Video">Edicion de Video</option>
-                                    <option value="Programacion">Programacion</option>
-                                    <option value="Gaming">Gaming</option>
-                                  </select>
-                                </div>
-                                <div class="col-md-2">
-                                  <label for="" class="form-label">Stock</label>
-                                  <input type="number" class="form-control" id="stockPreensamble" name="stockPreensamble" required>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary" id="Agregar2"><i class="bi bi-plus-circle"></i> Agregar</button>
-                                </div>
-                              </form>
-                        </div>
-                </div>
-            </div>
+            <table class="table table-bordered table-striped text-center mt-4 table-dark">
+                <thead>
+                    <tr class="bg-primary text-white">
+                        <% fields.forEach((usuario)=>{ %>
+                        <th scope="col"><%=usuario.name %></th>
+                        <% }) %>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    
+                    <tr>
+                        <% results.forEach((usuario)=>{ %>
+                        <td><%=usuario.idUsuario %></td>
+                        <td><%=usuario.nombre%></td>
+                        <td><%=usuario.domicilio %></td>
+                        <td><%=usuario.telefono %></td>
+                        <td><%=usuario.correo%></td>
+                        <td><%=usuario.contraseña%></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+
         </div>
 
         

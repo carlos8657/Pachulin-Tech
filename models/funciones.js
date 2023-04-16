@@ -56,12 +56,26 @@ exports.update = (req,res)=>{
 
 exports.buscar = (req,res)=>{
     const palabra = req.body.palabra;
-    conexion.query("select * from productos where idProducto like '%"+ palabra +"%' or descripcion like '%"+ palabra +"%' or precio like '%"+ palabra +"%' or imagen like '%"+ palabra +"%' or stock like '%"+ palabra +"%' or categoria like '%"+ palabra +"%' or estado like '%"+ palabra +"%'",(error,results,fields)=>{
+    const categoriaTabla = req.body.categoriaTabla;
+    conexion.query("select * from productos where idProducto like '%"+ palabra +"%' or descripcion like '%"+ palabra +"%' or precio like '%"+ palabra +"%' or imagen like '%"+ palabra +"%' or stock like '%"+ palabra +"%' or categoria like '%"+ palabra +"%' or estado like '%"+ palabra +"%'",[categoriaTabla],(error,results,fields)=>{
         if(error){
             console.log(error);
         }else{
             fields[fields.length] = {name: 'Acciones'}
             res.render('busqueda.html',{results,fields});
+        }
+    })
+
+
+}
+
+exports.buscarUsuarios = (req,res)=>{
+    const palabra = req.body.palabra;
+    conexion.query("select * from usuario where idUsuario like '%"+ palabra +"%' or nombreUsuario like '%"+ palabra +"%' or correo like '%"+ palabra +"%'",(error,results,fields)=>{
+        if(error){
+            console.log(error);
+        }else{
+            res.render('usuarios.html',{results,fields});
         }
     })
 
