@@ -176,6 +176,7 @@ router.post('/register', async (req, res) => {
         await  conexion.query(query, values);
         console.log('Usuario registrado:', { usuario, correo });
         console.log('Datos recibidos');
+        
     } catch (error) {
         console.log('Error al registrar usuario:', error);
         console.log('Error al registrar usuario');
@@ -202,6 +203,7 @@ router.post('/register', async (req, res) => {
          if(error){
              throw error;
          }else{
+                console.log(contra, resultados[0].contra);
               const passwordMatch = await bcrypt.compare(contra, resultados[0].contra);
               if (passwordMatch) {
                   console.log('Inicio de sesión exitoso');
@@ -234,6 +236,15 @@ router.get('/usuarios',(req,res)=>{
     res.render('usuarios.html',);
 })
 
+router.get('/preensambles',(req,res)=>{
+    conexion.query('Select * From preensambladas', (error,results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('preensambles.html',{results});
+        }
+    })
+})
 
 router.post('/saveProducto',funciones.saveProducto)
 router.post('/savePreensamble',funciones.savePreensamble)
