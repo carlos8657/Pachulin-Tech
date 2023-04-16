@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const misRutas = require('./router/index');
 const path = require('path');
+const session = require('express-session');
 
 
 const app = express()
@@ -26,4 +27,10 @@ app.listen(port,()=>{
     console.log('Inciado el puerto 2000')
 })
 
+
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 

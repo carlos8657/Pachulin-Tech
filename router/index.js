@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const bodyParser = require ('body-parser');
 const conexion = require('../models/db')
 const funciones = require('../models/funciones');
 const bcrypt = require('bcryptjs');
-const mysql = require('mysql2/promise');
 const saltRounds = 10;
-const users = []; // array para almacenar usuarios
-const app = express();
-router.use(bodyParser.urlencoded({ extended: false }));
 const session = require('express-session');
 
 
@@ -28,7 +23,7 @@ router.use(multer({
 
 
 router.get('/inicio',(req,res)=>{
-    res.render('inicio.html',);
+    res.render('inicio.html')
 })
 
 router.get('/productos',(req,res)=>{
@@ -40,6 +35,7 @@ router.get('/productos',(req,res)=>{
         }
     })
 })
+
 
 
 router.get('/preensambles',(req,res)=>{
@@ -187,65 +183,52 @@ router.get('/detalles/:id', (req,res)=>{
 })
 
 router.post('/register', async (req, res) => {
-    const { usuario, correo, contra } = req.body;
- 
+    const nombre = req.body.nombre;
+    const domicilio = req.body.domicilio;
+    const telefono = req.body.telefono;
+    const correo = req.body.correo;
+    const contra = req.body.contra;
+    
     const hashedPassword = await bcrypt.hash(contra, saltRounds);
- 
-    const query = `
-        INSERT INTO usuarios (usuario, correo, contra)
-        VALUES (?, ?, ?)
-    `;
- 
-    const values = [usuario, correo, hashedPassword];
- 
-    try {
-        await  conexion.query(query, values);
-        console.log('Usuario registrado:', { usuario, correo });
-        console.log('Datos recibidos');
-    } catch (error) {
-        console.log('Error al registrar usuario:', error);
-        console.log('Error al registrar usuario');
-    }
+
+    var today = new Date();
+    var now = today.toISOString()
+    conexion.query('INSERT INTO usuario set ?',{nombre: nombre, domicilio: domicilio, telefono: telefono, correo: correo, contra: hashedPassword},async (error,resultados)=>{
+        conexion.query('insert into ventas set ?',{idVenta: 0, total: 0, fecha: now, tipoPago: "Tarjeta de credito", idUsuario: resultados.insertId}, async (er,result)=>{
+            if(error){
+                throw error;
+            }else{
+                console.log(now)
+                res.redirect('/login')
+            }
+
+        })
+    })
+
  });
  
- 
- 
-//     const query = `
-//         SELECT * FROM usuarios
-//         WHERE correo = ?
-//     `;
+ router.post('/login', async (req, res) => {
+    const correo = req.body.correo;
+    const contra = req.body.contra;
 
-//     const query = `
-//         SELECT * FROM usuarios
-//         WHERE correo = ?
-//     `;
+    conexion.query('SELECT * FROM usuario WHERE correo = ?',[correo], async (error,resultados)=>{
+        if(error){
+            throw error;
+        }else{
+             const passwordMatch = await bcrypt.compareSync(contra, resultados[0].contra);
+             if (passwordMatch) {
+                 req.session.loggedin = true;
+	             req.session.name = resultados[0].nombre;
+                 res.redirect('/inicio')
+             } else {
+                res.render('login.html')
+             }
+        }
 
-  router.post('/login', async (req, res) => {
-     const correo = req.body.correo;
-     const contra = req.body.contra;
- 
-     conexion.query('SELECT * FROM usuarios WHERE correo = ?',[correo], async (error,resultados)=>{
-         if(error){
-             throw error;
-         }else{
-              const passwordMatch = await bcrypt.compare(contra, resultados[0].contra);
-              if (passwordMatch) {
-                  console.log('Inicio de sesión exitoso');
-              } else {
-                 console.log('Contraseña incorrecta');
-              }
-         }
-        
-     })
+    })
 
-    
-  });
-function register(req, res){
 
-res.render('register.html',);
-
-}
-
+ });
 
 
 router.get('/login',(req,res)=>{
@@ -254,7 +237,7 @@ router.get('/login',(req,res)=>{
 
 router.get('/carrito', (req,res)=>{
     const id = req.params.id;
-    conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = 1;',[id],(error,resultado)=>{
+    conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = 5;',[id],(error,resultado)=>{
         if(error){
             throw error;
         }else{

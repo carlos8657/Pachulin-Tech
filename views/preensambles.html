@@ -59,24 +59,6 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active " id="nav-Photoshop" role="tabpanel" aria-labelledby="nav-Photoshop-tab">
                 <div class="row justify-content-start">
-                    <% results.forEach((usuario)=>{ %>
-                        <%if (usuario.categoria == "Photoshop"){%>
-                            <% if (usuario.estado == 1){%>
-                                <div class="col">
-                                    <div class="card" style="width: 15rem;">
-                                        <img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><%=usuario.descripcion%></h5>
-                                            <p class="card-text"><%=usuario.categoria%></p>
-                                            <img src="<%=usuario.stats%>" class="card-img-top " alt="Imagen">  <img src="<%=usuario.stats%>" class="card-img-top " alt="Imagen">
-
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <%}%>
-                        <%}%>
-                    <% }) %>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-Office" role="tabpanel" aria-labelledby="nav-Office-tab">
