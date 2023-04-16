@@ -10,6 +10,7 @@ const saltRounds = 10;
 const users = []; // array para almacenar usuarios
 const app = express();
 router.use(bodyParser.urlencoded({ extended: false }));
+const session = require('express-session');
 
 
 const storage = multer.diskStorage({
@@ -159,8 +160,7 @@ router.get('/detalles/:id', (req,res)=>{
     })
 })
 
-
- router.post('/register', async (req, res) => {
+router.post('/register', async (req, res) => {
     const { usuario, correo, contra } = req.body;
  
     const hashedPassword = await bcrypt.hash(contra, saltRounds);
@@ -173,7 +173,7 @@ router.get('/detalles/:id', (req,res)=>{
     const values = [usuario, correo, hashedPassword];
  
     try {
-        await conexion.query(query, values);
+        await  conexion.query(query, values);
         console.log('Usuario registrado:', { usuario, correo });
         console.log('Datos recibidos');
     } catch (error) {
@@ -182,58 +182,43 @@ router.get('/detalles/:id', (req,res)=>{
     }
  });
  
-//  //router.post('/login', async (req, res) => {
-//     const { correo, contra } = req.body;
+ 
  
 //     const query = `
 //         SELECT * FROM usuarios
 //         WHERE correo = ?
 //     `;
+
+//     const query = `
+//         SELECT * FROM usuarios
+//         WHERE correo = ?
+//     `;
+
+  router.post('/login', async (req, res) => {
+     const correo = req.body.correo;
+     const contra = req.body.contra;
  
-//     const [rows] =  await conexion.query(query, [correo]);
- 
-//     if (rows.length > 0) {
-//         const user = rows[0];
-//         const passwordMatch = await bcrypt.compare(contra, user.contra);
- 
-//         if (passwordMatch) {
-//             console.log('Inicio de sesión exitoso para el usuario:', user);
-//             console.log('Inicio de sesión exitoso');
-//         } else {
-//             console.log('Contraseña incorrecta para el usuario:', user);
-//             console.log('Contraseña incorrecta');
-//         }
-//     } else {
-//         console.log('Usuario no encontrado con el correo:', correo);
-//         console.log('Usuario no encontrado');
-//     }
-// // });
- 
- router.post('/login',  (req, res) => {
-    const correo = req.body.correo;
-    const contra = req.body.contra;
- 
-    conexion.query('SELECT * FROM usuarios WHERE correo = ?',[correo], async (error,resultados)=>{
-        if(error){
-            throw error;
-        }else{
-             const passwordMatch = await bcrypt.compare(contra, resultados[0].contra);
-             if (passwordMatch) {
-                 console.log('Inicio de sesión exitoso');
-             } else {
-                console.log('Contraseña incorrecta');
-             }
-        }
+     conexion.query('SELECT * FROM usuarios WHERE correo = ?',[correo], async (error,resultados)=>{
+         if(error){
+             throw error;
+         }else{
+              const passwordMatch = await bcrypt.compare(contra, resultados[0].contra);
+              if (passwordMatch) {
+                  console.log('Inicio de sesión exitoso');
+              } else {
+                 console.log('Contraseña incorrecta');
+              }
+         }
         
-    })
+     })
 
     
- });
- 
+  });
+function register(req, res){
 
+res.render('register.html',);
 
-
-
+}
 
 
 

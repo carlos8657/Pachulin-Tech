@@ -26,7 +26,7 @@ exports.savePreensamble = (req,res)=>{
     const stats = req.files.stats[0].path.slice(6);;
     const categoria = req.body.categoriaPreensamble;
     const estado = req.body.estadoPreensamble;
-    conexion.query('Insert into preensambladas set ?', {descripcion: descripcion, precio: precio, stock: stock, imagen: imagen, stats: stats, categoria: categoria, estado : 1}, (error,results)=>{
+    conexion.query('Insert into preensambladas set ?', {descripcion: descripcion, precio: precio, stock: stock, imagen: imagen, stats: stats, categoria: categoria, estado : 1}, (error,resultado)=>{
         if(error){
             console.log(error);
         }else{
