@@ -154,7 +154,7 @@
                 <br>
                 <div class="row">
                   <div class="col-md-6">
-                    <input class="form-control" placeholder="Numero de la Tarjeta" id="numeroTarjeta" name="numeroTarjeta" type="number" required>
+                    <input class="form-control" placeholder="Numero de la Tarjeta" id="numeroTarjeta" name="numeroTarjeta" type="text" pattern="[0-9]{16}" maxlength="16"  min="0" max="9999" required>
                   </div>
                   <div class="col-md-6">
                     <input class="form-control" placeholder="Titular de la tarjeta" id="titular" name="titular" type="text" required>
@@ -163,14 +163,14 @@
                 <br>
                 <div class="row">
                   <div class="col-md-3">
-                    <input placeholder="MM" class="form-control" type="text" id="MM" name="MM" required>
+                    <input placeholder="MM" class="form-control" type="text" id="MM" name="MM" maxlength="2" required>
                   </div>
                   /
                   <div class="col-md-3">
-                    <input placeholder="YY" class="form-control" type="text" id="YY" name="YY" required>
+                    <input placeholder="YY" class="form-control" type="text" id="YY" name="YY" maxlength="2" required>
                   </div>
                   <div class="col-md-5">
-                    <input placeholder="CVV" class="form-control" type="text" id="CVV" name="CVV" required>
+                    <input placeholder="CVV" class="form-control" type="text" id="CVV" name="CVV" maxlength="3" required>
                   </div>
                 </div>
                 <br>
