@@ -116,7 +116,7 @@ router.get('/agregarCarritoProducto/:id', (req,res)=>{
     if(req.session.name){
         conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
             conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+ re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
-                conexion.query('insert into detallesVentaProducto( idProducto,idVentaProducto,cantidad,subtotal) select idProducto, '+ results[0].idVenta +' as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario inner join ventas where productos.idProducto= '+ id +' limit 1;',(error,resultado)=>{
+                conexion.query('insert into detallesVentaProducto( idProducto,idVentaProducto,cantidad) select idProducto, '+ results[0].idVenta +' as idVentaProducto, 1 as cantidad from productos inner join usuario inner join ventas where productos.idProducto= '+ id +' limit 1;',(error,resultado)=>{
                     if(error){
                         throw error;
                     }else{
@@ -174,6 +174,46 @@ router.get('/eliminar/:id', (req,res)=>{
         }
     })
 })
+
+router.get('/mas/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('select * from detallesVentaProducto where idDetalleVentaProducto = ?',[id],(error,results)=>{
+        const nuevaCantidad = results[0].cantidad + 1;
+        conexion.query('update detallesVentaProducto set ? where idDetalleVentaProducto = ?',[{cantidad: nuevaCantidad},id],(error,resultado)=>{
+            if(error){
+                throw error;
+            }else{
+                res.redirect('/carrito');
+            }
+        })
+    })
+})
+
+router.get('/menos/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('select * from detallesVentaProducto where idDetalleVentaProducto = ?',[id],(error,results)=>{
+        if (results[0].cantidad <= 1){
+            conexion.query('delete  from detallesVentaProducto where idDetalleVentaProducto = ?',[id],(error,result)=>{
+                if(error){
+                    throw error;
+                }else{
+                    res.redirect('/carrito');
+                }
+            })
+        }else{
+            const nuevaCantidad = results[0].cantidad - 1;
+        conexion.query('update detallesVentaProducto set ? where idDetalleVentaProducto = ?',[{cantidad: nuevaCantidad},id],(error,resultado)=>{
+            if(error){
+                throw error;
+            }else{
+                res.redirect('/carrito');
+            }
+        })
+        }
+    })
+})
+
+
 
 router.get('/activar/:id', (req,res)=>{
     const id = req.params.id;

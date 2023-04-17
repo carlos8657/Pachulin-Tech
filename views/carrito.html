@@ -78,17 +78,28 @@
               <tbody>
                   <%
                     var total = 0;
+                    var subtotal = 0;
                   %>
                   <% resultado.forEach((usuario)=>{ %>
                   <tr>
                       
                           <td><img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen" style="height: 150px; width: 150px;"></td>
                           <td><%=usuario.descripcion%></td>
-                          <td><%=usuario.cantidad%></td>
+
+                          <td>
+                            <a href="/mas/<%=usuario.idDetalleVentaProducto %>" class="btn btn-danger"><i class="bi bi-plus-lg"></i></a>
+                            <%=usuario.cantidad%>
+                            <a href="/menos/<%=usuario.idDetalleVentaProducto %>" class="btn btn-danger"><i class="bi bi-dash"></i></a>
+                          </td>
+
                           <td><%=usuario.precio%></td>
-                          <td><%=usuario.subtotal%></td>
                           <%
-                            total = total + usuario.subtotal
+                            subtotal = usuario.cantidad * usuario.precio
+                          %>
+
+                          <td><%=subtotal%></td>
+                          <%
+                            total = total + subtotal
                           %>
                           <td>
                               <a href="/eliminar/<%=usuario.idDetalleVentaProducto %>" class="btn btn-danger"><i class="bi bi-trash-fill"></i>Eliminar</a>
@@ -116,10 +127,10 @@
                 <br>
                 <div class="row">
                   <div class="col-md-6">
-                    <input class="form-control" minlength="10" placeholder="Numero de la Tarjeta" id="numeroTarjeta" name="numeroTarjeta" type="number" required>
+                    <input class="form-control" placeholder="Numero de la Tarjeta" id="numeroTarjeta" name="numeroTarjeta" type="number" required>
                   </div>
                   <div class="col-md-6">
-                    <input class="form-control" minlength="10" placeholder="Titular de la tarjeta" id="titular" name="titular" type="text" required>
+                    <input class="form-control" placeholder="Titular de la tarjeta" id="titular" name="titular" type="text" required>
                   </div>
                 </div>
                 <br>
@@ -194,13 +205,14 @@
         </style>
         
         <script>
+          
           $("#comprar").click(function(){
-            Swal.fire({
-                icon: 'success',
-                title: 'Compra realizada'
-            })
-            sleep(3000)
-        });
+            if ($('#numeroTarjeta').val()== "" || $('#titular').val() == "" || $('#MM').val() == "" || $('#YY').val() == "" || $('#CVV').val() == ""){
+            swal.fire('Error','Faltan datos','error')
+            }else{
+              swal.fire('Compra realizada','La compra se ha realizado correctamente.','success')
+            }
+          });
 
         </script>
 
