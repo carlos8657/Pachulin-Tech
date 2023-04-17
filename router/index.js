@@ -7,6 +7,14 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const session = require('express-session');
 
+router.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
+
+
 
 const storage = multer.diskStorage({
     destination: 'public/img',
@@ -22,28 +30,47 @@ router.use(multer({
 }).fields([{name: 'imagenProducto'},{name: 'imagenPreensamble'}, {name: 'stats'}]))
 
 
-router.get('/inicio',(req,res)=>{
-    res.render('inicio.html')
-})
 
 router.get('/productos',(req,res)=>{
     conexion.query('Select * From productos', (error,results)=>{
         if(error){
             throw error;
         }else{
-            res.render('productos.html',{results});
+            if(req.session.loggedin == true){
+                res.render('productos.html',{results, name: req.session.name});
+            }else{
+                res.render('productos.html',{results, name: ""});
+            }
+            
         }
     })
+
+    
 })
 
 
 
 router.get('/preensambles',(req,res)=>{
-    res.render('preensambles.html',);
+    conexion.query('Select * From preensambladas', (error,results)=>{
+        if(error){
+            throw error;
+        }else{
+            if(req.session.loggedin == true){
+                res.render('preensambles.html',{results, name: req.session.name});
+            }else{
+                res.render('preensambles.html',{results, name: ""});
+            }
+            
+        }
+    })
 })
 
 router.get('/promociones',(req,res)=>{
-    res.render('promociones.html',);
+    if(req.session.loggedin == true){
+        res.render('promociones.html',{ name: req.session.name});
+    }else{
+        res.render('promociones.html',{ name: ""});
+    }
 })
 
 router.get('/armado',(req,res)=>{
@@ -85,15 +112,31 @@ router.get('/editar/:id', (req,res)=>{
 
 
 router.get('/agregarCarritoProducto/:id', (req,res)=>{
-    const id = req.params.id;    
-    conexion.query('insert into detallesVentaProducto( idDetalleVentaProducto,idProducto,idVentaProducto,cantidad,subtotal) select 0 as idDetalleVentaProducto, idProducto, MAX(ventas.idVenta) as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario inner join ventas where productos.idProducto= ?;',[id],(error,resultado)=>{
-        if(error){
-            throw error;
-        }else{
-            res.redirect('/carrito');
-        }
-    })
+    const id = req.params.id;
+    if(req.session.name){
+        conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
+            conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+ re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
+                conexion.query('insert into detallesVentaProducto( idProducto,idVentaProducto,cantidad,subtotal) select idProducto, '+ results[0].idVenta +' as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario inner join ventas where productos.idProducto= '+ id +' limit 1;',(error,resultado)=>{
+                    if(error){
+                        throw error;
+                    }else{
+                        // res.redirect('/carrito');
+                    }
+                })
+            })
+        })
+    }else{
+        conexion.query('insert into detallesVentaProducto( idProducto,idVentaProducto,cantidad,subtotal) select idProducto, 1 as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario inner join ventas where productos.idProducto= '+ id +' limit 1;',(error,resultado)=>{
+            if(error){
+                throw error;
+            }else{
+                // res.redirect('/carrito');
+            }
+        })
+    }
 })
+
+
 
 
 router.get('/editar_preensamble/:id', (req,res)=>{
@@ -198,7 +241,6 @@ router.post('/register', async (req, res) => {
             if(error){
                 throw error;
             }else{
-                console.log(now)
                 res.redirect('/login')
             }
 
@@ -231,21 +273,92 @@ router.post('/register', async (req, res) => {
  });
 
 
+router.get('/inicio',(req,res)=>{
+    if(req.session.loggedin == true){
+        res.render('inicio.html',{ name: req.session.name})
+    }else{
+        res.render('inicio.html',{ name: ""})
+    }
+})
+
+router.get('/logout',(req,res)=>{
+    if(req.session.loggedin == true){
+        req.session.destroy();
+        res.redirect('/inicio')
+    }else{
+        res.render('inicio.html')
+    }
+})
+
+
 router.get('/login',(req,res)=>{
     res.render('login.html',);
 })
 
-router.get('/carrito', (req,res)=>{
-    const id = req.params.id;
-    conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = 5;',[id],(error,resultado)=>{
-        if(error){
-            throw error;
-        }else{
 
-            res.render('carrito.html',{resultado});
-        }
-    })
+router.get('/carrito', (req,res)=>{
+    if(req.session.name){
+        conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
+            conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+  re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
+                conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = '+ results[0].idVenta +';',(error,resultado)=>{
+                    if(error){
+                        throw error;
+                    }else{
+                        if(req.session.loggedin == true){
+                            res.render('carrito.html',{resultado, name: req.session.name});
+                        }else{
+                            res.render('carrito.html',{resultado, name: ""});
+                        }
+                    }
+                })
+            })
+        })
+    }else{
+        conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = 1;',(error,resultado)=>{
+            if(error){
+                throw error;
+            }else{
+                if(req.session.loggedin == true){
+                    res.render('carrito.html',{resultado, name: req.session.name});
+                }else{
+                    res.render('carrito.html',{resultado, name: ""});
+                }
+            }
+        })
+    }
 })
+
+router.post('/comprar', (req,res) =>{
+    var today = new Date();
+    var now = today.toISOString()
+    const total = req.body.total;
+    const metodoPago = req.body.metodoPago;
+    if(req.session.name){
+        conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
+            conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+  re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
+                conexion.query('Update ventas set ? where idVenta = ?',[{total: total, fecha: now, tipoPago: metodoPago},results[0].idVenta],(error,resultado)=>{
+                    if(error){
+                        console.log(error);
+                    }else{
+                        setTimeout(() => {
+                            res.redirect('/carrito');
+                          }, 3000);
+                    }
+                })
+            })
+        })
+    }else{
+        res.redirect('/login')
+    }
+    
+})
+
+
+
+
+
+
+
 
 
 router.get('/register',(req,res)=>{

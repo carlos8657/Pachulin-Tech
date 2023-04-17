@@ -90,7 +90,7 @@
                                                                     <h5 class="card-title"><%=usuario.descripcion%></h5>
                                                                     <p class="card-text"><%=usuario.categoria%></p>
                                                                     <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;"><h6>$<%=usuario.precio%></h6></a>
-                                                                    <button class="add-to-cart btn btn-outline-success">Agregar al carrito</button>
+                                                                    <a href="/agregarCarritoProducto/<%=usuario.idProducto%>"  class="add-to-cart btn btn-outline-success">Agregar al carrito</a>
                                                                 </div>
                                                             </div>
                                                             <%}%>
@@ -109,7 +109,7 @@
                     <div class="col-md-3">
                         <div class="card mt-5" style="width: 18rem; height: 27rem ;">
                             <center>
-                                <h1>Carrito</h1>
+                                <h1>Resumen</h1>
                             </center>
                             <div class="card-body">
                                 <ul id="cart-items">

@@ -40,9 +40,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/carrito" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-cart" style="margin-right: 10px;"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
-                    </li>
+                    <% if (name){ %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i><%=name%></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-box-arrow-right"></i>  Log out</a>
+                          </li>
+                      <% }else{ %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/login" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
+                        </li>
+                      <% } %>
                 </ul>
             </div>
         </div>
@@ -59,26 +68,107 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active " id="nav-Photoshop" role="tabpanel" aria-labelledby="nav-Photoshop-tab">
                 <div class="row justify-content-start">
+                    <% results.forEach((usuario)=>{ %>
+                        <%if (usuario.categoria == "Photoshop"){%>
+                            <% if (usuario.estado == 1){%>
+                                <div class="col">
+                                    <div class="card" style="width: 15rem;">
+                                        <img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=usuario.descripcion%></h5>
+                                            <p class="card-text"><%=usuario.categoria%></p>
+                                            <img src="<%=usuario.stats%>" alt="Imagen">
+                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    <% }) %>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-Office" role="tabpanel" aria-labelledby="nav-Office-tab">
                 <div class="row justify-content-start">
-               
+                    <% results.forEach((usuario)=>{ %>
+                        <%if (usuario.categoria == "Office"){%>
+                            <% if (usuario.estado == 1){%>
+                                <div class="col">
+                                    <div class="card" style="width: 15rem;">
+                                        <img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=usuario.descripcion%></h5>
+                                            <p class="card-text"><%=usuario.categoria%></p>
+                                            <img src="<%=usuario.stats%>" alt="Imagen">
+                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    <% }) %>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-Edicion" role="tabpanel" aria-labelledby="nav-Edicion-tab">
                 <div class="row justify-content-start">
-                    
+                    <% results.forEach((usuario)=>{ %>
+                        <%if (usuario.categoria == "Edicion de Video"){%>
+                            <% if (usuario.estado == 1){%>
+                                <div class="col">
+                                    <div class="card" style="width: 15rem;">
+                                        <img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=usuario.descripcion%></h5>
+                                            <p class="card-text"><%=usuario.categoria%></p>
+                                            <img src="<%=usuario.stats%>" alt="Imagen">
+                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    <% }) %>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-Programacion" role="tabpanel" aria-labelledby="nav-Programacion-tab">
                 <div class="row justify-content-start">
-              
+                    <% results.forEach((usuario)=>{ %>
+                        <%if (usuario.categoria == "Programacion"){%>
+                            <% if (usuario.estado == 1){%>
+                                <div class="col">
+                                    <div class="card" style="width: 15rem;">
+                                        <img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=usuario.descripcion%></h5>
+                                            <p class="card-text"><%=usuario.categoria%></p>
+                                            <img src="<%=usuario.stats%>" alt="Imagen">
+                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    <% }) %>
                 </div>
             </div>
             <div class="tab-pane fade " id="nav-Gaming" role="tabpanel" aria-labelledby="nav-Gaming-tab">
                 <div class="row justify-content-start">
-                   
+                    <% results.forEach((usuario)=>{ %>
+                        <%if (usuario.categoria == "Gaming"){%>
+                            <% if (usuario.estado == 1){%>
+                                <div class="col">
+                                    <div class="card" style="width: 15rem;">
+                                        <img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=usuario.descripcion%></h5>
+                                            <p class="card-text"><%=usuario.categoria%></p>
+                                            <img src="<%=usuario.stats%>" alt="Imagen">
+                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    <% }) %>
                 </div>
             </div>
         </div>

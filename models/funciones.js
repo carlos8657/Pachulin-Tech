@@ -71,7 +71,7 @@ exports.buscar = (req,res)=>{
 
 exports.buscarUsuarios = (req,res)=>{
     const palabra = req.body.palabra;
-    conexion.query("select * from usuario where idUsuario like '%"+ palabra +"%' or nombreUsuario like '%"+ palabra +"%' or correo like '%"+ palabra +"%'",(error,results,fields)=>{
+    conexion.query("select * from usuario where idUsuario like '%"+ palabra +"%' or nombre like '%"+ palabra +"%' or correo like '%"+ palabra +"%'' or domicilio like '%"+ palabra +"%'' or telefono like '%"+ palabra +"%'",(error,results,fields)=>{
         if(error){
             console.log(error);
         }else{
