@@ -75,14 +75,15 @@ exports.update2 = (req,res)=>{
 
 exports.buscar = (req,res)=>{
     const palabra = req.body.palabra;
-    const categoriaTabla = req.body.categoriaTabla;
-    conexion.query("select * from productos where idProducto like '%"+ palabra +"%' or descripcion like '%"+ palabra +"%' or precio like '%"+ palabra +"%' or imagen like '%"+ palabra +"%' or stock like '%"+ palabra +"%' or categoria like '%"+ palabra +"%' or estado like '%"+ palabra +"%'",[categoriaTabla],(error,results,fields)=>{
-        if(error){
-            console.log(error);
-        }else{
-            fields[fields.length] = {name: 'Acciones'}
-            res.render('busqueda.html',{results,fields});
-        }
+    conexion.query("select * from productos where idProducto like '%"+ palabra +"%' or descripcion like '%"+ palabra +"%' or precio like '%"+ palabra +"%' or imagen like '%"+ palabra +"%' or stock like '%"+ palabra +"%' or categoria like '%"+ palabra +"%' or estado like '%"+ palabra +"%'",(err,results,fields)=>{
+        conexion.query("select * from preensambladas where idPreensamblada like '%"+ palabra +"%' or descripcion like '%"+ palabra +"%' or precio like '%"+ palabra +"%' or imagen like '%"+ palabra +"%' or stock like '%"+ palabra +"%' or categoria like '%"+ palabra +"%' or estado like '%"+ palabra +"%' or stats like'%"+ palabra +"%'",(error,resultados)=>{
+            if(error){
+                console.log(error);
+            }else{
+                fields[fields.length] = {name: 'Acciones'}
+                res.render('busqueda.html',{results,resultados,fields});
+            }
+        })
     })
 
 
