@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 router.use(multer({
     storage,
     dest: 'public/img'
-}).fields([{name: 'imagenProducto'},{name: 'imagenPreensamble'}, {name: 'stats'}]))
+}).fields([{name: 'imagenProducto'},{name: 'imagenPreensamble'}, {name: 'stats'}, {name: 'imagen'},{name: 'stats1'}, {name: 'imagen1'}]))
 
 
 
@@ -65,14 +65,6 @@ router.get('/preensambles',(req,res)=>{
     })
 })
 
-router.get('/promociones',(req,res)=>{
-    if(req.session.loggedin == true){
-        res.render('promociones.html',{ name: req.session.name});
-    }else{
-        res.render('promociones.html',{ name: ""});
-    }
-})
-
 router.get('/armado',(req,res)=>{
     conexion.query('Select * From productos', (error,results)=>{
         conexion.query('Select DISTINCT categoria From productos', (err,resultado)=>{
@@ -99,7 +91,7 @@ router.get('/administrador', async (req,res)=>{
     
 })
 
-router.get('/editar/:id', (req,res)=>{
+router.get('/editarProducto/:id', (req,res)=>{
     const id = req.params.id;
     conexion.query('Select * from productos where idProducto = ?',[id],(error,resultado)=>{
         if(error){
@@ -109,6 +101,18 @@ router.get('/editar/:id', (req,res)=>{
         }
     })
 })
+
+router.get('/editarPreensamble/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('Select * from preensambladas where idPreensamblada = ?',[id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('editarPreensamble.html',{usuario: resultado[0]});
+        }
+    })
+})
+
 
 router.get('/agregarCarritoProducto/:id', (req,res)=>{
     const id = req.params.id;
@@ -230,6 +234,17 @@ router.get('/desactivar/:id', (req,res)=>{
     })
 })
 
+router.get('/desactivar2/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('Update preensambladas set ? where idPreensamblada = ?',[{estado: 0},id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/busqueda');
+        }
+    })
+})
+
 router.get('/eliminar/:id', (req,res)=>{
     const id = req.params.id;
     conexion.query('delete  from detallesVentaProducto where idDetalleVentaProducto = ?',[id],(error,resultado)=>{
@@ -341,14 +356,27 @@ router.get('/activar/:id', (req,res)=>{
     })
 })
 
-router.get('/busqueda', async (req,res)=>{
-    conexion.query('Select * From productos', (error,results,fields)=>{
+router.get('/activar2/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('Update preensambladas set ? where idPreensamblada = ?',[{estado: 1},id],(error,resultado)=>{
         if(error){
             throw error;
         }else{
-            fields[fields.length] = {name: 'Acciones'}
-            res.render('busqueda.html',{results,fields});
+            res.redirect('/busqueda');
         }
+    })
+})
+
+router.get('/busqueda', async (req,res)=>{
+    conexion.query('Select * From productos', (error,results,fields)=>{
+        conexion.query('Select * From preensambladas', (err,resultados)=>{
+            if(error){
+                throw error;
+            }else{
+                fields[fields.length] = {name: 'Acciones'}
+                res.render('busqueda.html',{results,resultados,fields});
+            }
+        })
     })
     
 })
@@ -542,6 +570,7 @@ router.post('/savePreensamble',funciones.savePreensamble)
 router.post('/buscar',funciones.buscar)
 router.post('/buscarUsuarios',funciones.buscarUsuarios)
 router.post('/update/:id',funciones.update)
+router.post('/update2/:id',funciones.update2)
 
 
 module.exports=router;

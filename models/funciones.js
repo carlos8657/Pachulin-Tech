@@ -44,8 +44,27 @@ exports.update = (req,res)=>{
     const precio = req.body.precio;
     const stock = req.body.stock;
     const categoria = req.body.categoria;
+    const imagen = req.files.imagen[0].path.slice(6);
     const estado = req.body.estado;
-    conexion.query('Update productos set ? where idProducto = ?',[{descripcion: descripcion, precio: precio, stock: stock, categoria: categoria, estado: estado},id],(error,results)=>{
+    conexion.query('Update productos set ? where idProducto = ?',[{descripcion: descripcion, precio: precio, imagen: imagen, stock: stock, categoria: categoria, estado: estado},id],(error,results)=>{
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/busqueda');
+        }
+    })
+}
+
+exports.update2 = (req,res)=>{
+    const {id} = req.params;
+    const descripcion = req.body.descripcion;
+    const precio = req.body.precio;
+    const stock = req.body.stock;
+    const categoria = req.body.categoria;
+    const imagen = req.files.imagen1[0].path.slice(6);
+    const stats = req.files.stats1[0].path.slice(6);
+    const estado = req.body.estado;
+    conexion.query('Update preensambladas set ? where idPreensamblada = ?',[{descripcion: descripcion, precio: precio, imagen: imagen, stats: stats, stock: stock, categoria: categoria, estado: estado},id],(error,results)=>{
         if(error){
             console.log(error);
         }else{
