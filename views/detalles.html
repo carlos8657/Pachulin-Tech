@@ -114,6 +114,7 @@
 
                     <%
                       var subtotal = 0;
+                      var subtotal2 = 0;
                     %>
                     <tr>
                         <% resultado.forEach((usuario)=>{ %>
@@ -131,7 +132,12 @@
                         <% results.forEach((usuario)=>{ %>
                             <td><%=usuario.idPreensamblada %></td>
                             <td><%=usuario.descripcion %></td>
-
+                            <td><%=usuario.cantidad %></td>
+                            <td><%=usuario.precio %></td>                            
+                            <%
+                                subtotal2 = usuario.cantidad * usuario.precio
+                            %>
+                            <td><%=subtotal2 %></td>                            
                         </tr>
                             <% }) %>
                     

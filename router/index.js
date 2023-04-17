@@ -110,31 +110,97 @@ router.get('/editar/:id', (req,res)=>{
     })
 })
 
-
 router.get('/agregarCarritoProducto/:id', (req,res)=>{
     const id = req.params.id;
     if(req.session.name){
         conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
             conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+ re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
-                conexion.query('insert into detallesVentaProducto( idProducto,idVentaProducto,cantidad) select idProducto, '+ results[0].idVenta +' as idVentaProducto, 1 as cantidad from productos inner join usuario inner join ventas where productos.idProducto= '+ id +' limit 1;',(error,resultado)=>{
-                    if(error){
+                const venta = results[0].idVenta;
+                conexion.query('SELECT * FROM detallesVentaProducto WHERE idProducto = ? AND idVentaProducto = ?', [id, venta], (error, result) => {
+                    if (error) {
                         throw error;
-                    }else{
-                        // res.redirect('/carrito');
+                    } else {
+                        if (result.length > 0) {
+                            // si elproducto ya existe actualiza la cantidad y el subtotal alv
+                            const cantidad = result[0].cantidad + 1;
+                            conexion.query('UPDATE detallesVentaProducto SET cantidad = ? WHERE idProducto = ? AND idVentaProducto = ?', [cantidad, id, venta], (error, resultado) => {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    // res.redirect('/carrito');
+                                }
+                            });
+                        } else {
+                            // si no existe inserta una nueva fila
+                            conexion.query('INSERT INTO detallesVentaProducto (idProducto, idVentaProducto, cantidad) SELECT idProducto, ?, 1 as cantidad FROM productos WHERE idProducto = ?', [venta, id], (error, resultado) => {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    // res.redirect('/carrito');
+                                }
+                            });
+                        }
                     }
-                })
-            })
-        })
-    }else{
-        conexion.query('insert into detallesVentaProducto( idProducto,idVentaProducto,cantidad,subtotal) select idProducto, 1 as idVentaProducto, 1 as cantidad, productos.precio * 1 as subtotal from productos inner join usuario inner join ventas where productos.idProducto= '+ id +' limit 1;',(error,resultado)=>{
+                });
+            });
+        });
+    } else {
+        conexion.query('INSERT INTO detallesVentaProducto (idProducto, idVentaProducto, cantidad) SELECT idProducto, 1, 1 as cantidad FROM productos WHERE idProducto = ?', [id], (error, resultado)=>{
             if(error){
                 throw error;
-            }else{
+            } else {
                 // res.redirect('/carrito');
             }
-        })
+        });
     }
-})
+});
+
+router.get('/agregarCarritoPreensamble/:id', (req,res)=>{
+    const id = req.params.id;
+    if(req.session.name){
+        conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
+            conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+ re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
+                const venta = results[0].idVenta;
+                conexion.query('SELECT * FROM detallesVentaPreensamblada WHERE idPreensamblada = ? AND idVentaPreensamblada = ?', [id, venta], (error, result) => {
+                    if (error) {
+                        throw error;
+                    } else {
+                        if (result.length > 0) {
+                            // si elproducto ya existe actualiza la cantidad y el subtotal alv
+                            const cantidad = result[0].cantidad + 1;
+                            conexion.query('UPDATE detallesVentaPreensamblada SET cantidad = ? WHERE idPreensamblada = ? AND idVentaPreensamblada = ?', [cantidad, id, venta], (error, resultado) => {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    // res.redirect('/carrito');
+                                }
+                            });
+                        } else {
+                            // si no existe inserta una nueva fila
+                            conexion.query('INSERT INTO detallesVentaPreensamblada (idPreensamblada, idVentaPreensamblada, cantidad) SELECT idPreensamblada, ?, 1 as cantidad FROM preensambladas WHERE idPreensamblada = ?', [venta, id], (error, resultado) => {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    // res.redirect('/carrito');
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    } else {
+        conexion.query('INSERT INTO detallesVentaPreensamblada (idPreensamblada, idVentaPreensamblada, cantidad) SELECT idPreensamblada, 1, 1 as cantidad FROM preensambladas WHERE idPreensamblada = ?', [id], (error, resultado)=>{
+            if(error){
+                throw error;
+            } else {
+                // res.redirect('/carrito');
+            }
+        });
+    }
+});
+
+
 
 
 
@@ -175,11 +241,36 @@ router.get('/eliminar/:id', (req,res)=>{
     })
 })
 
+router.get('/eliminar2/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('delete  from detallesVentaPreensamblada where idDetalleVentaPreensamblada = ?',[id],(error,resultado)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/carrito');
+        }
+    })
+})
+
 router.get('/mas/:id', (req,res)=>{
     const id = req.params.id;
     conexion.query('select * from detallesVentaProducto where idDetalleVentaProducto = ?',[id],(error,results)=>{
         const nuevaCantidad = results[0].cantidad + 1;
         conexion.query('update detallesVentaProducto set ? where idDetalleVentaProducto = ?',[{cantidad: nuevaCantidad},id],(error,resultado)=>{
+            if(error){
+                throw error;
+            }else{
+                res.redirect('/carrito');
+            }
+        })
+    })
+})
+
+router.get('/mas2/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('select * from detallesVentaPreensamblada where idDetalleVentaPreensamblada = ?',[id],(error,results)=>{
+        const nuevaCantidad = results[0].cantidad + 1;
+        conexion.query('update detallesVentaPreensamblada set ? where idDetalleVentaPreensamblada = ?',[{cantidad: nuevaCantidad},id],(error,resultado)=>{
             if(error){
                 throw error;
             }else{
@@ -203,6 +294,30 @@ router.get('/menos/:id', (req,res)=>{
         }else{
             const nuevaCantidad = results[0].cantidad - 1;
         conexion.query('update detallesVentaProducto set ? where idDetalleVentaProducto = ?',[{cantidad: nuevaCantidad},id],(error,resultado)=>{
+            if(error){
+                throw error;
+            }else{
+                res.redirect('/carrito');
+            }
+        })
+        }
+    })
+})
+
+router.get('/menos2/:id', (req,res)=>{
+    const id = req.params.id;
+    conexion.query('select * from detallesVentaPreensamblada where idDetalleVentaPreensamblada = ?',[id],(error,results)=>{
+        if (results[0].cantidad <= 1){
+            conexion.query('delete  from detallesVentaPreensamblada where idDetalleVentaPreensamblada = ?',[id],(error,result)=>{
+                if(error){
+                    throw error;
+                }else{
+                    res.redirect('/carrito');
+                }
+            })
+        }else{
+            const nuevaCantidad = results[0].cantidad - 1;
+        conexion.query('update detallesVentaPreensamblada set ? where idDetalleVentaPreensamblada = ?',[{cantidad: nuevaCantidad},id],(error,resultado)=>{
             if(error){
                 throw error;
             }else{
@@ -253,7 +368,7 @@ router.get('/ventas', async (req,res)=>{
 router.get('/detalles/:id', (req,res)=>{
     const id = req.params.id;
     conexion.query('select detallesVentaProducto.idProducto, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal  from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where detallesVentaProducto.idVentaProducto = ?',[id],(error,resultado,fields)=>{
-        conexion.query('select detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
+        conexion.query('select detallesVentaPreensamblada.idPreensamblada, preensambladas.descripcion, detallesVentaPreensamblada.cantidad, preensambladas.precio, detallesVentaPreensamblada.subtotal  from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where detallesVentaPreensamblada.idVentaPreensamblada = ?',[id], (error,results)=>{
             if(error){
                 throw error;
             }else{
@@ -341,29 +456,33 @@ router.get('/carrito', (req,res)=>{
         conexion.query('select * from usuario where nombre = ?;',[req.session.name],(error,re)=>{
             conexion.query('select idVenta from ventas inner join usuario on ventas.idUsuario = '+  re[0].idUsuario +' where usuario.idUsuario = '+ re[0].idUsuario +';',(error,results)=>{
                 conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = '+ results[0].idVenta +';',(error,resultado)=>{
-                    if(error){
-                        throw error;
-                    }else{
-                        if(req.session.loggedin == true){
-                            res.render('carrito.html',{resultado, name: req.session.name});
+                    conexion.query('select detallesVentaPreensamblada.idDetalleVentaPreensamblada, preensambladas.imagen, preensambladas.descripcion, detallesVentaPreensamblada.cantidad, preensambladas.precio, detallesVentaPreensamblada.subtotal from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where idVentaPreensamblada = '+ results[0].idVenta +';',(error,resultados)=>{
+                        if(error){
+                            throw error;
                         }else{
-                            res.render('carrito.html',{resultado, name: ""});
+                            if(req.session.loggedin == true){
+                                res.render('carrito.html',{resultado,resultados, name: req.session.name});
+                            }else{
+                                res.render('carrito.html',{resultado,resultados, name: ""});
+                            }
                         }
-                    }
+                    })
                 })
             })
         })
     }else{
         conexion.query('select detallesVentaProducto.idDetalleVentaProducto, productos.imagen, productos.descripcion, detallesVentaProducto.cantidad, productos.precio, detallesVentaProducto.subtotal from detallesVentaProducto inner join productos on detallesVentaProducto.idProducto = productos.idProducto where idVentaProducto = 1;',(error,resultado)=>{
-            if(error){
-                throw error;
-            }else{
-                if(req.session.loggedin == true){
-                    res.render('carrito.html',{resultado, name: req.session.name});
+            conexion.query('select detallesVentaPreensamblada.idDetalleVentaPreensamblada, preensambladas.imagen, preensambladas.descripcion, detallesVentaPreensamblada.cantidad, preensambladas.precio, detallesVentaPreensamblada.subtotal from detallesVentaPreensamblada inner join preensambladas on detallesVentaPreensamblada.idPreensamblada = preensambladas.idPreensamblada where idVentaPreensamblada = 1;',(error,resultados)=>{
+                if(error){
+                    throw error;
                 }else{
-                    res.render('carrito.html',{resultado, name: ""});
+                    if(req.session.loggedin == true){
+                        res.render('carrito.html',{resultado,resultados, name: req.session.name});
+                    }else{
+                        res.render('carrito.html',{resultado,resultados, name: ""});
+                    }
                 }
-            }
+            })
         })
     }
 })
@@ -414,6 +533,8 @@ router.get('/usuarios',(req,res)=>{
         }
     })
 })
+
+
 
 
 router.post('/saveProducto',funciones.saveProducto)

@@ -79,6 +79,7 @@
                   <%
                     var total = 0;
                     var subtotal = 0;
+                    var subtotal2 = 0;
                   %>
                   <% resultado.forEach((usuario)=>{ %>
                   <tr>
@@ -108,6 +109,35 @@
   
                   </tr>
                   <% }) %>
+
+                  <% resultados.forEach((usuario)=>{ %>
+                    <tr>
+                        
+                            <td><img src="<%=usuario.imagen%>" class="card-img-top " alt="Imagen" style="height: 150px; width: 150px;"></td>
+                            <td><%=usuario.descripcion%></td>
+  
+                            <td>
+                              <a href="/mas2/<%=usuario.idDetalleVentaPreensamblada %>" class="btn btn-danger"><i class="bi bi-plus-lg"></i></a>
+                              <%=usuario.cantidad%>
+                              <a href="/menos2/<%=usuario.idDetalleVentaPreensamblada %>" class="btn btn-danger"><i class="bi bi-dash"></i></a>
+                            </td>
+  
+                            <td><%=usuario.precio%></td>
+                            <%
+                              subtotal2 = usuario.cantidad * usuario.precio
+                            %>
+  
+                            <td><%=subtotal2%></td>
+                            <%
+                              total = total + subtotal2
+                            %>
+                            <td>
+                                <a href="/eliminar2/<%=usuario.idDetalleVentaPreensamblada %>" class="btn btn-danger"><i class="bi bi-trash-fill"></i>Eliminar</a>
+                            </td>
+                        
+    
+                    </tr>
+                    <% }) %>
                   
               </tbody>
           </table>
