@@ -74,9 +74,9 @@
     <div class="container">
         <div class="container mt-4">
             <div class="card border-secondary">
-                <div class="card-header">Editar Producto</div>
+                <div class="card-header">Editar Preensamble</div>
                 <div class="card-body">
-                  <form action="/update/<%=usuario.idProducto%>" class="row g-3" method="post" enctype="multipart/form-data">
+                  <form action="/update2/<%=usuario.idPreensamblada%>" class="row g-3" method="post" enctype="multipart/form-data">
                     <div class="col-md-4">
                         <label for="" class="form-label">Estado</label>
                         <select id="estado" name="estado" class="form-select">
@@ -86,7 +86,7 @@
                       </div>
                     <div class="col-md-4">
                       <label for="" class="form-label">ID</label>
-                      <input class="form-control" id="idProducto" name="idProducto" value="<%=usuario.idProducto%>" disabled>
+                      <input class="form-control" id="idProducto" name="idPreensamblada" value="<%=usuario.idPreensamblada%>" disabled>
                     </div>
                     <div class="col-md-4">
                         <label for="" class="form-label">Precio</label>
@@ -96,21 +96,22 @@
                       <label for="" class="form-label">Descripcion</label>
                       <textarea class="form-control" id="descripcion" name="descripcion" rows="3"><%=usuario.descripcion%></textarea>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label for="formFile" class="form-label">Imagen</label>
-                        <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*" value="<%=usuario.imagen%>">
+                        <input class="form-control" type="file" id="imagen1" name="imagen1" accept="image/*" value="<%=usuario.imagen%>">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="formFile" class="form-label">Stats</label>
+                        <input class="form-control" type="file" id="stats1" name="stats1" accept="image/*" value="<%=usuario.stats%>">
                     </div>
                     <div class="col-md-4">
                       <label for="" class="form-label">Categoria</label>
                       <select id="categoria" name="categoria" class="form-select">
-                        <option <%=usuario.categoria=='Procesador' ? "selected" : '' %>selected value="Procesador">Procesador</option>
-                        <option <%=usuario.categoria=='Disipador' ? "selected" : '' %> value="Disipador">Disipador</option>
-                        <option <%=usuario.categoria=='Tarjeta Madre' ? "selected" : '' %> value="Tarjeta Madre">Tarjeta Madre</option>
-                        <option <%=usuario.categoria=='Memoria RAM' ? "selected" : '' %> value="Memoria RAM">Memoria RAM</option>
-                        <option <%=usuario.categoria=='Disco Duro' ? "selected" : '' %> value="Disco Duro">Disco Duro</option>
-                        <option <%=usuario.categoria=='Tarjeta de Video' ? "selected" : '' %> value="Tarjeta de Video">Tarjeta de Video</option>
-                        <option <%=usuario.categoria=='Gabinete' ? "selected" : '' %> value="Gabinete">Gabinete</option>
-                        <option <%=usuario.categoria=='Fuente de Poder' ? "selected" : '' %> value="Fuente de Poder">Fuente de Poder</option>
+                        <option <%=usuario.categoria=='Photoshop' ? "selected" : '' %>selected value="Photoshop">Photoshop</option>
+                        <option <%=usuario.categoria=='Office' ? "selected" : '' %> value="Office">Office</option>
+                        <option <%=usuario.categoria=='Edicion de Video' ? "selected" : '' %> value="Edicion de Video">Edicion de Video</option>
+                        <option <%=usuario.categoria=='Programacion' ? "selected" : '' %> value="Programacion">Programacion</option>
+                        <option <%=usuario.categoria=='Gaming' ? "selected" : '' %> value="Gaming">Gaming</option>
                       </select>
                     </div>
                     <div class="col-md-2">

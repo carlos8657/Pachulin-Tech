@@ -74,7 +74,7 @@
     <div class="container">
         <!-- Tablero para modificar datos -->        
         <div class="container-fluid">
-            <div class="container mt-4">
+            <!-- <div class="container mt-4">
                 <div class="card">
                     <div class="card-body">
                         <form action="/buscar" method="post">
@@ -97,7 +97,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Tabla con los datos -->
             <table class="table table-bordered table-striped text-center mt-4 table-dark">
                 <thead>
@@ -115,6 +115,7 @@
                         <td><%=usuario.idVenta %></td>
                         <td><%=usuario.total %></td>
                         <td><%=usuario.fecha %></td>
+                        <td><%=usuario.tipoPago%></td>
                         <td><%=usuario.idUsuario %></td>
                         <td>
                             <a href="/detalles/<%=usuario.idVenta%>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Detalles</a>

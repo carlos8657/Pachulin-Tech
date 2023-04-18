@@ -83,12 +83,6 @@
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="palabra" name="palabra" required tabindex="1">
                                 </div>
-                                <div class="col-sm-2">
-                                  <select id="categoriaTabla" name="categoriaTabla" class="form-select" required>
-                                    <option selected value="productos">Productos</option>
-                                    <option value="preensambladas">Preensambladas</option>
-                                  </select>
-                                </div>
                                 <div class="col-sm-1">
                                     <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Buscar</button>
                                 </div>
@@ -111,9 +105,8 @@
                 </thead>
                 <tbody>
 
-                    
+                    <% results.forEach((usuario)=>{ %>
                     <tr>
-                        <% results.forEach((usuario)=>{ %>
                         <td><%=usuario.idProducto %></td>
                         <td style="max-width: 250px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%=usuario.descripcion %></td>
                         <td><%=usuario.precio %></td>
@@ -123,17 +116,39 @@
                         <td><%=usuario.estado %></td>
                         <% if (usuario.estado == 0){ %>
                             <td>
-                                <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                <a href="/editarProducto/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
                                 <a href="/activar/<%=usuario.idProducto %>" class="btn btn-danger"><img src="../img/switch-off.png" alt=""></a>
                             </td>
                         <% }else{ %>
                             <td>
-                                <a href="/editar/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                <a href="/editarProducto/<%=usuario.idProducto %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
                                 <a href="/desactivar/<%=usuario.idProducto %>" class="btn btn-success"><img src="../img/switch-on.png" alt=""></a>
                             </td>
                         <% } %>
                     </tr>
                     <% }) %>
+                    <% resultados.forEach((usuario)=>{ %>
+                        <tr>
+                            <td><%=usuario.idPreensamblada %></td>
+                            <td style="max-width: 250px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%=usuario.descripcion %></td>
+                            <td><%=usuario.precio %></td>
+                            <td><img src="<%=usuario.imagen%>" alt="" width="200px" height="200px"></td>
+                            <td><%=usuario.stock %></td>
+                            <td><%=usuario.categoria %></td>
+                            <td><%=usuario.estado %></td>
+                            <% if (usuario.estado == 0){ %>
+                                <td>
+                                    <a href="/editarPreensamble/<%=usuario.idPreensamblada %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                    <a href="/activar2/<%=usuario.idPreensamblada %>" class="btn btn-danger"><img src="../img/switch-off.png" alt=""></a>
+                                </td>
+                            <% }else{ %>
+                                <td>
+                                    <a href="/editarPreensamble/<%=usuario.idPreensamblada %>" class="btn btn-info"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                    <a href="/desactivar2/<%=usuario.idPreensamblada %>" class="btn btn-success"><img src="../img/switch-on.png" alt=""></a>
+                                </td>
+                            <% } %>
+                        </tr>
+                        <% }) %>
                 </tbody>
             </table>
         </div>
