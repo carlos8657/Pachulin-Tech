@@ -79,16 +79,20 @@ router.get('/armado',(req,res)=>{
 
 
 router.get('/administrador', async (req,res)=>{
-
-    conexion.query('Select * From productos', (error,results,fields)=>{
-        if(error){
-            throw error;
-        }else{
-            fields[fields.length] = {name: 'Acciones'}
-            res.render('administrador.html',{results,fields});
+    if(req.session.loggedin == true){
+        if(req.session.name === "admin"){
+            conexion.query('Select * From productos', (error,results,fields)=>{
+                if(error){
+                    throw error;
+                }else{
+                    fields[fields.length] = {name: 'Acciones'}
+                    res.render('administrador.html',{results,fields});
+                }
+            })
         }
-    })
-    
+    }else{
+        res.redirect('/inicio');
+    }    
 })
 
 router.get('/editarProducto/:id', (req,res)=>{
@@ -400,7 +404,6 @@ router.get('/detalles/:id', (req,res)=>{
             if(error){
                 throw error;
             }else{
-                console.log(resultado)
                 fields[fields.length] = {name: 'Acciones'}
                 res.render('detalles.html',{resultado,fields,results});
             }
@@ -424,6 +427,7 @@ router.post('/register', async (req, res) => {
             if(error){
                 throw error;
             }else{
+                console.log(result);
                 res.redirect('/login')
             }
 

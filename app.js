@@ -22,9 +22,9 @@ app.use((req,res,next)=>{
     res.status(404).sendFile(__dirname + '/public/error.html');
 })
 
-const port = 2000
+const port = 8650
 app.listen(port,()=>{
-    console.log('Inciado el puerto 2000')
+    console.log('Inciado el puerto 8650')
 })
 
 
