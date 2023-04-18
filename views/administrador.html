@@ -7,20 +7,23 @@
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="/js/bootstrap.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="/public/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Administrador</title>
 </head>
 <!-- Fondo de pantalla -->
-<body style="background-image: url(/public/img/protruding-squares6.svg)">
+<body style="background-image: url(/img/protruding-squares6.svg)">
     <div class="sidebar">
         <div class="logo_details">
-            <div class="logo_name"><img src="/public/img/pachulogo.jpg" height="30" width="30" alt="" style="border-radius: 25px; margin-left: 10px;"> Pachulin-Tech</div>
+            <div class="logo_name"><img src="/img/pachulogo.jpg" height="30" width="30" alt="" style="border-radius: 25px; margin-left: 10px;"> Pachulin-Tech</div>
             <i class="bx bx-menu" id="btn"></i>
         </div>
         <ul class="nav-list">
             <li>
-                <a href="/views/inicio.html">
+                <a href="/inicio">
                 <i class='bx bx-home-alt-2'></i>
                 <span class="link_name">Inicio</span>
                 </a>
@@ -28,61 +31,48 @@
             </li>
             
             <li>
-                <a href="#">
-                <i class="bx bx-folder"></i>
-                <span class="link_name">Productos</span>
-                </a>
-                <span class="tooltip">Productos</span>
-            </li>
-
-            <li>
-                <a href="#">
-                <i class="bx bx-user"></i>
-                <span class="link_name">Registrar</span>
+                <a href="/administrador">
+                    <i class="bi bi-journal-text"></i> 
+                    <span class="link_name">Registrar</span>
                 </a>
                 <span class="tooltip">Registrar</span>
             </li>
             <li>
-                <a href="#">
-                <i class="bx bx-chat" style="height: 40px; width: 40px;"></i>
-                <span class="link_name">Inventario</span>
+                <a href="/busqueda">
+                    <i class="bi bi-box-seam"></i>
+                    <span class="link_name">Inventario</span>
                 </a>
-                <span class="tooltip">Inventario</span>
+                    <span class="tooltip">Inventario</span>
             </li>
             <li>
-                <a href="#">
-                <i class="bx bx-pie-chart-alt-2" style="height: 40px; width: 40px;"></i>
-                <span class="link_name">Ventas</span>
+                <a href="/ventas">
+                    <i class="bi bi-bag"></i>
+                    <span class="link_name">Ventas</span>
                 </a>
                 <span class="tooltip">Ventas</span>
             </li>
+
             <li>
-                <a href="#">
-                <i class="bx bx-folder" style="height: 40px; width: 40px;"></i>
-                <span class="link_name">si</span>
+                <a href="/usuarios">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="link_name">Usuarios</span>
                 </a>
-                <span class="tooltip">si</span>
+                <span class="tooltip">Usuarios</span>
             </li>
-            <li>
-                <a href="#">
-                <i class="bx bx-cart-alt"></i>
-                <span class="link_name">si</span>
-                </a>
-                <span class="tooltip">si</span>
-            </li>
+
             <li class="profile">
-                <a href="#">
+                <a href="/login">
                 <i class="bx bx-log-out" id="log_out"></i>
-                <span class="link_name">si</span>
+                <span class="link_name">Salir</span>
                 </a>
-                <span class="tooltip">si</span>
+                <span class="tooltip">Salir</span>
             </li>
             
         </ul>
     </div>
-
-    <div class="container">
-        <!-- Tablero para modificar datos -->        
+    <div class="container"
+     -->
+        <!-- Tablero para modificar datos -->
         <div class="container-fluid">
             <div class="container mt-4">
                 <div class="card border-secondary">
@@ -154,6 +144,8 @@
                 </tbody>
             </table>
         </div>
+
+        
     </div>
     <!-- Footer -->
     <div class="container pb-5">
@@ -187,7 +179,8 @@
         window.onload = function(){
             const sidebar = document.querySelector(".sidebar");
             const closeBtn = document.querySelector("#btn");
-            const searchBtn = document.querySelector(".bx-search")
+            const searchBtn = document.querySelector(".bx-search");
+            const container = document.querySelector(".container");
 
             closeBtn.addEventListener("click",function(){
                 sidebar.classList.toggle("open")
@@ -200,13 +193,32 @@
             })
 
             function menuBtnChange(){
+
                 if(sidebar.classList.contains("open")){
                     closeBtn.classList.replace("bx-menu","bx-menu-alt-right")
                 }else{
                     closeBtn.classList.replace("bx-menu-alt-right","bx-menu")
                 }
             }
+
         }
+
+        $("#Agregar").click(function(){
+            Swal.fire({
+                icon: 'success',
+                title: 'Agregado con exito'
+            })
+            sleep(3000)
+        });
+
+        $("#Agregar2").click(function(){
+            Swal.fire({
+                icon: 'success',
+                title: 'Agregado con exito'
+            })
+            sleep(3000)
+        });
+
     </script>
     <!-- Estilos -->
     <style>
@@ -558,7 +570,9 @@
             margin-bottom: 80px;
         }
 
+
     </style>
+
 
 </body>
 </html>

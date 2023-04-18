@@ -11,32 +11,32 @@
     <script src="/public/js/bootstrap.js"></script>
     <title>Ensamble</title>
 </head>
-<body  style="background-image: url(/public/img/protruding-squares6.svg)">
+<body  style="background-image: url(/img/protruding-squares6.svg)">
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="navbar-brand" href="/views/inicio.html">
-                            <img src="/public/img/pachulogo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-m text-center" style="width: 50px; height: 50px; font-family: Helvetica, sans-serif; border-radius: 25px;">
+                        <a class="navbar-brand" href="/inicio">
+                            <img src="/img/pachulogo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-m text-center" style="width: 50px; height: 50px; font-family: Helvetica, sans-serif; border-radius: 25px;">
                             Pachulin-Tech
                         </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/views/productos.html" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-box-seam-fill" style="margin-right: 10px;"></i>Productos</a>
+                        <a class="nav-link" href="/productos" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-box-seam-fill" style="margin-right: 10px;"></i>Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="/views/preensambles.html" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-pc-display" style="margin-right: 10px;"></i>Preensambladas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/views/promociones.html" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-gpu-card" style="margin-right: 10px;"></i>Promociones</a>
+                        <a class="nav-link link-light" href="/preensambles" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-pc-display" style="margin-right: 10px;"></i>Preensambles</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/views/login.html" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
+                        <a class="nav-link" href="/carrito" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-cart" style="margin-right: 10px;"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
         <div class="container mb-4 mt-5">
             <div class="checkout-box innerbottom-sm">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mt-5" style="width: 18rem; height: 27rem ;">
                             <img src="/public/img/proce.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -57,754 +57,70 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <!--Contenedores de productos -->
                         <div class="body-content outer-top-bd">
                             <div class="accordion accordion-flush" id="" style="max-width: 1200px; margin: 0 auto; ">
                                 <div class="aling-items-center">
                                     <h1 class="text-center bg-dark text-white" style="font-family:Helvetica, sans-serif;">Configurador de PC</h1>
                                 </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Procesadores
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Procesadores/Athlon 3000G.png" class="card-img-top " alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Athlon 300G</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Procesadores/Ryzen 4600.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Ryzen 5 4600</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem; ">
-                                                <img src="/public/img/Procesadores/Ryzen 5600.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Ryzen 5 5600</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem; ">
-                                                <img src="/public/img/Procesadores/Ryzen 5600x.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Ryzen 5 5600x</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem; ">
-                                                <img src="/public/img/Procesadores/Ryzen 5700.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Ryzen 7 5700</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem; ">
-                                                <img src="/public/img/Procesadores/i9-13900KF.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Intel I9</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Procesadores/i7-13700K.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Intel I7</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Procesadores/i5-13600K.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Intel I5</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Procesadores/i5-10600KF.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Intel I5</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Procesadores/I3-13100F.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Intel I3</h5>
-                                                    <p class="card-text">Procesador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
+                                
+                                
+                                        <% let i = 0;%>
+                                        <% resultado.forEach((titulo)=>{ %>
+                                        <% i = i + 1;%>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-categoria<%=i%>" aria-expanded="false" aria-controls="flush-categoria<%=i%>">
+                                                    <%=titulo.categoria%>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-categoria<%=i%>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                                
+                                                <div class="accordion-body row">
+                                                    <% results.forEach((usuario)=>{ %>
+                                                        <% if (titulo.categoria == usuario.categoria){%>
+                                                            <% if(usuario.estado == 1){%>
+                                                            <div class="card" style="width: 15rem;">
+                                                                <img src="<%=usuario.imagen%>" class="card-img-top " alt="...">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title"><%=usuario.descripcion%></h5>
+                                                                    <p class="card-text"><%=usuario.categoria%></p>
+                                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;"><h6>$<%=usuario.precio%></h6></a>
+                                                                    <a href="/agregarCarritoProducto/<%=usuario.idProducto%>"  class="add-to-cart btn btn-outline-success">Agregar al carrito</a>
+                                                                </div>
+                                                            </div>
+                                                            <%}%>
+                                                        <% } %>
+                                                    <% }) %>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                            Disipadores
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Vetroo V5 Black RGB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Vetroo V5 Black RGB</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/NZXT T120 Blanco RGB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">NZXT T120 Blanco</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Be Quiet! Dark Rock Pro TR4.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Be Quiet! Dark Rock</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Noctua NH-U12S chromax.black.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Noctua NH-U12S</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Noctua NH-D15.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Noctua NH-D15</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Gigabyte AORUS WATERFORCE.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Gigabyte AORUS WATERFORCE</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Game Factor Lqg501.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Game Factor Lqg501</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Deepcool Gammaxx L240.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Deepcool Gammaxx L240</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/MSI MPG CORELIQUID.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">MSI MPG CORELIQUID</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Disipadores/Corsair H100I RGB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Corsair H100I RGB</h5>
-                                                    <p class="card-text">Disipador</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                            
-                                        </div>
+                                        <% }) %>
                                         
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingTre">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTre" aria-expanded="false" aria-controls="flush-collapseTre">
-                                            Tarjetas Madre
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseTre" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/Gigabyte A320M.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Gigabyte A320M</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/Asus PRIME B550M.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Asus PRIME B550M</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/NZXT N7 B550.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">NZXT N7 B550</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/ROG Strix B660.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">ROG Strix B660</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/Asus Rog Strix B760.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Asus Rog Strix B760</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/Asus ROG Strix B550.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Asus ROG Strix</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/Asrock B550 EXTREME4.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Asrock B550</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/GIGABYTE X570S AORUS ELITE.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GIGABYTE X570S</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/ASUS TUF GAMING X670E.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">ASUS TUF  X670E</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjetas-madre/Asrock B550M.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Asrock B550M</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingCua">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCua" aria-expanded="false" aria-controls="flush-collapseCua">
-                                            Memorias RAM
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseCua" class="accordion-collapse collapse" aria-labelledby="flush-headingCua" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Adata XPG Gammix.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Adata XPG Gammix</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Kingston Fury Beast.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Kingston Fury Beast</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Kingston Fury Beast White RGB.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Kingston Fury Beast</h5>
-                                                    <p class="card-text">Memoria Ram 16GB(2x8)</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/TEAMGROUP T FORCE DELTA.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">TEAMGROUP DELTA</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Corsair LPX Black.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Corsair LPX Black</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Adata XPG Spectrix D50.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Adata XPG Spectrix</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Kingston Renegade.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Kingston Renegade</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/Patriot Viper Steel.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Patriot Viper Steel</h5>
-                                                    <p class="card-text">Memoria Ram 16GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/XPG Spectrix.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">XPG Spectrix</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Memorias-Ram/TeamGroup T-Force Elite Plus.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">TeamGroup T-Force</h5>
-                                                    <p class="card-text">Memoria Ram 8GB</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingCin">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCin" aria-expanded="false" aria-controls="flush-collapseCin">
-                                            Discos duros
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseCin" class="accordion-collapse collapse" aria-labelledby="flush-headingCin" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">WD Blue 1TB</h5>
-                                                    <p class="card-text">Disco Duro</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/Seagate Skyhawk Lite 2TB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Seagate Skyhawk Lite 2TB</h5>
-                                                    <p class="card-text">Disco Duro</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/Seagate IronWolf NAS.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Seagate IronWolf NAS 4TB</h5>
-                                                    <p class="card-text">Disco Duro</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/Seagate Iron Wolf.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Seagate Iron Wolf 6TB</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/Seagate SkyHawk.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Seagate SkyHawk 8TB</h5>
-                                                    <p class="card-text">Tarjeta Madre</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/WD Blue 1TB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">ASUS TUF  X670E</h5>
-                                                    <p class="card-text">SSD</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/TeamGroup T-Force Vulcan Z.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">TeamGroup 512GB</h5>
-                                                    <p class="card-text">SSD</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/PNY.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">PNY 480GB</h5>
-                                                    <p class="card-text">SSD</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/WD Green.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">WD Green 1TB</h5>
-                                                    <p class="card-text">SSD</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Discos-Duros/M.2 Nvme WD GREEN.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">M.2 Nvme WD GREEN 240GB</h5>
-                                                    <p class="card-text">M.2</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingSei">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSei" aria-expanded="false" aria-controls="flush-collapseSei">
-                                            Tarjetas de video
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSei" class="accordion-collapse collapse" aria-labelledby="flush-headingSei" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/1030.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/1650.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/rx 6400.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/1660.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/Rtx 2060.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/Rtx 3050.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/rx 6650.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/Rtx 3060.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/Rtx 3090.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Tarjeta-video/Rtx 4090.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">GTX 1650</h5>
-                                                    <p class="card-text">Tarjeta grafica de 4gb</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingSie">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSie" aria-expanded="false" aria-controls="flush-collapseSie">
-                                            Gabinetes
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSie" class="accordion-collapse collapse" aria-labelledby="flush-headingSie" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/Munfrost LUFT.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">Munfrost LUFT</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/MSI MPG GUNGNIR 111R.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">MSI MPG GUNGNIR 111R</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/HYTE Y60.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">HYTE Y60</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/Asus GT502 TUF Gaming Black.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">Asus GT502 TUF Black</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/Asus TUF Gaming GT501 White.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">Asus GT501 TUF White</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/Yeyian Hollow 2500 White.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">Yeyian Hollow White</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/MSI MAG FORGE 112R.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">MSI MAG FORGE 112R</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/Xzeal XZ135.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">Xzeal XZ135</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/NZXT H510 Flow Blanco-Mate.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">NZXT H510 Flow</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Gabinetes/Corsair Crystal 280X RGB.jpg" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-body">Corsair Crystal</h5>
-                                                    <p class="card-text">Gabinete</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOch">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOch" aria-expanded="false" aria-controls="flush-collapseOch">
-                                            Fuentes de poder
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOch" class="accordion-collapse collapse" aria-labelledby="flush-headingSei" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body row">
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/ASUS ROG Thor Platinum II.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">ASUS ROG Thor</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/CORSAIR CX550F.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">CORSAIR CX550F</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/Corsair CX550FB.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Corsair CX550FB</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/EVGA 600W 80+.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">EVGA 600W 80+</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/EVGA Continuous Power.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">EVGA Continuous Power</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/Gigabyte GP-P550B.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Gigabyte GP-P550B</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/Munfrost Power Box GP-500.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Munfrost Power Box GP-500</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/Munfrost Power Box.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Munfrost Power Box</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/Vorago PSU-200.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Vorago PSU-200</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                            <div class="card" style="width: 15rem;">
-                                                <img src="/public/img/Fuentes-poder/ASUS ROG Thor Titanium.png" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">ASUS ROG Thor Titanium.png</h5>
-                                                    <p class="card-text">Funte de poder</p>
-                                                    <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$1000 MXN</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                         </div>
                     </div>
-                </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-5" style="width: 18rem; height: 27rem ;">
+                            <center>
+                                <h1>Resumen</h1>
+                            </center>
+                            <div class="card-body">
+                                <ul id="cart-items">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
+
+
+
 
     <div class="container pb-5">
         <footer class="bg-dark text-center text-white fixed-bottom" >
@@ -819,14 +135,14 @@
                     <a href="" class="btn btn-outline-light btn-floating m-1 p-0 px-1" role="button">
                         <i class="bi bi-linkedin"></i>
                     </a>
-                    <a href="/views/administrador.html" class="btn btn-outline-light btn-floating m-1 p-0 px-1" role="button">
+                    <a href="/administrador" class="btn btn-outline-light btn-floating m-1 p-0 px-1" role="button">
                         <i class="bi bi-github"></i>
                     </a>
                 </section>
             </div>
             <div class="text-center " style="background-color: rgba(0, 0, 0, 0.2);">
                     © 2023 | Todos los derechos reservados | 
-                <a href="/views/inicio.html" class="text-white">Pachulin-Tech</a>
+                <a href="/inicio" class="text-white">Pachulin-Tech</a>
             </div>
         </footer>
     </div>
@@ -845,7 +161,6 @@
             float: none;
             margin-bottom: 2%;
         }
-            
 
         .accordion-button{
             color: white;
@@ -860,7 +175,7 @@
 
         .accordion-item{
             background-color: rgb(128, 139, 150);
-            
+
         }
 
     </style>
@@ -882,7 +197,48 @@
         }
     </style>
 
-    
+    <!-- Scripts -->
+    <script>
+        // Obtener elementos del DOM
+        const cartItemsEl = document.getElementById("cart-items");
+        const cartTotalEl = document.getElementById("cart-total");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+        // Inicializar carrito
+        let cartItems = [];
+        let cartTotal = 0;
+
+        // Función para actualizar el carrito
+        function updateCart() {
+        // Limpiar elementos del carrito
+        cartItemsEl.innerHTML = "";
+
+        // Recorrer elementos del carrito y agregarlos al DOM
+        cartItems.forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item.name + " - $" + item.price;
+            cartItemsEl.appendChild(li);
+        });
+        cartTotalEl.innerText = cartTotal;
+        }
+
+        // Añadir evento click a los botones "Agregar al carrito"
+        addToCartButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Obtener nombre del producto
+            const name = button.parentElement.querySelector("h5").innerText;
+            const price = button.parentElement.querySelector("h6").innerText.slice(1);
+            // Agregar producto al carrito
+            cartItems.push({ name,price });
+
+            // Actualizar el carrito
+            updateCart();
+        });
+        });
+
+        cartTotal += parseInt(price);
+
+    </script>
 
 
 

@@ -1,11 +1,13 @@
 // Conexion a mysql
 const mysql = require('mysql')
+
 const conexion = mysql.createConnection({
     host: 'localhost',
-    database: 'pachulinTech',
-    user: 'root',
-    password: '',
+    database: 'pachulintech',
+    user: 'Carlos',
+    password: 'Golmania9.',
 });
+
 
 conexion.connect((error)=>{
     if(error){
