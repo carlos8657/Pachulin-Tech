@@ -32,14 +32,23 @@
                     <li class="nav-item">
                         <a class="nav-link link-light" href="/preensambles" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-pc-display" style="margin-right: 10px;"></i>Preensambles</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/promociones" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-gpu-card" style="margin-right: 10px;"></i>Promociones</a>
-                    </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/login" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
+                        <a class="nav-link" href="/carrito" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-cart" style="margin-right: 10px;"></i></a>
                     </li>
+                    <% if (name){ %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i><%=name%></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-box-arrow-right"></i>  Log out</a>
+                          </li>
+                      <% }else{ %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/login" style="font-family: Helvetica, sans-serif; font-size: 18px;"><i class="bi bi-person-circle" style="margin-right: 10px;"></i>Iniciar Sesion</a>
+                        </li>
+                      <% } %>
                 </ul>
             </div>
         </div>
@@ -71,7 +80,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +100,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a  href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +120,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +140,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +160,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +180,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +200,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +220,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%=usuario.descripcion%></h5>
                                             <p class="card-text"><%=usuario.categoria%></p>
-                                            <a class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
+                                            <a href="/agregarCarritoProducto/<%=usuario.idProducto%>" class="card-text bg-dark btn"  style="color: white; border-radius: 5px; text-decoration: none;">$<%=usuario.precio%></a>
                                         </div>
                                     </div>
                                 </div>
